@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Legatalk – Nền tảng kết nối cho Giáo dục & Họp trực tuyến</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Legatalk – Nền tảng kết nối cho Giáo dục & Họp trực tuyến</title>
+    <link rel="icon" type="image/png" href="https://legatalk.io.vn/images/logo.png">
 
-        <style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
       :root {
         --bg-main: #050816;
         --bg-card: rgba(15, 23, 42, 0.85);
@@ -1363,971 +1365,999 @@
           opacity: 0;
         }
       }
+      .brand-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 15px;
+  background: radial-gradient(circle at 30% 20%, #f9fafb 0, #e5e7eb 35%, #38bdf8 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: #020617;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.8);
+  overflow: hidden;           /* để logo không tràn khỏi khung */
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* nếu logo hình vuông / tròn */
+  /* nếu logo ngang, dùng:
+     object-fit: contain;
+     padding: 4px;
+  */
+}
+
     </style>
-    </head>
-    <body>
-        <div class="page">
-            <!-- glowing background -->
-            <div class="glow-orb orb-1"></div>
-            <div class="glow-orb orb-2"></div>
-            <div class="glow-orb orb-3"></div>
+  </head>
+  <body>
+    <div class="page">
+      <!-- glowing background -->
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+      <div class="glow-orb orb-3"></div>
 
-            <!-- NAVBAR -->
-            <header class="navbar">
-                <div class="container nav-inner">
-                    <div class="brand">
-                        <div class="brand-logo">L</div>
-                        <div class="brand-text">
-                            <div class="brand-title">Legatalk</div>
-                            <div class="brand-sub">AI · EDU · MEETING</div>
-                        </div>
-                    </div>
+      <!-- NAVBAR -->
+      <header class="navbar">
+        <div class="container nav-inner">
+          <div class="brand">
+            <div class="brand-logo">
+              <img src="https://legatalk.io.vn/images/logo.png" alt="Legatalk logo"
+                class="brand-logo-img" />
+            </div>
+            <div class="brand-text">
+              <div class="brand-title">Legatalk</div>
+              <div class="brand-sub">AI · EDU · MEETING</div>
+            </div>
+          </div>
 
-                    <button class="nav-toggle" aria-label="Mở menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
+          <button class="nav-toggle" aria-label="Mở menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
-                    <nav class="nav-links">
-                        <a href="#gioi-thieu" class="nav-link">Giới thiệu</a>
-                        <a href="#van-de" class="nav-link">Vấn đề</a>
-                        <a href="#co-hoi" class="nav-link">Cơ hội</a>
-                        <a href="#tam-nhin" class="nav-link">Tầm nhìn &amp; Sứ
-                            mệnh</a>
-                        <a href="#tinh-nang" class="nav-link">Tính năng</a>
-                        <a href="#ung-dung" class="nav-link">Tải app</a>
-                        <a href="#co-hoi-kinh-doanh" class="nav-link">Kinh
-                            doanh</a>
-                        <a href="https://legatalk.io.vn/">
-                            <button
-                            class="nav-cta"
-                            type="button"
-                            onclick="document.getElementById('lien-he').scrollIntoView({behavior:'smooth'})">
-                            Vào Website→
-                        </button>
-                        </a>
-                        
-                    </nav>
+          <nav class="nav-links">
+            <a href="#gioi-thieu" class="nav-link">Giới thiệu</a>
+            <a href="#van-de" class="nav-link">Vấn đề</a>
+            <a href="#co-hoi" class="nav-link">Cơ hội</a>
+            <a href="#tam-nhin" class="nav-link">Tầm nhìn &amp; Sứ
+              mệnh</a>
+            <a href="#tinh-nang" class="nav-link">Tính năng</a>
+            <a href="#ung-dung" class="nav-link">Tải app</a>
+            <a href="#co-hoi-kinh-doanh" class="nav-link">Kinh
+              doanh</a>
+              <a href="https://legatalk.io.vn">
+                 <button
+              class="nav-cta"
+              type="button"
+              onclick="document.getElementById('lien-he').scrollIntoView({behavior:'smooth'})">
+              Vào Website→
+            </button>
+              </a>
+           
+          </nav>
+        </div>
+      </header>
+
+      <!-- HERO -->
+      <section class="hero" id="gioi-thieu">
+        <div class="container hero-grid">
+          <div class="reveal">
+            <div class="hero-kicker">
+              <div class="hero-kicker-dot"></div>
+              Nền tảng kết nối cho giáo dục &amp; họp trực tuyến
+            </div>
+            <h1 class="hero-title">
+              Định nghĩa lại <span>học tập &amp; làm việc từ
+                xa</span> với AI.
+            </h1>
+            <p class="hero-sub">
+              Legatalk là nền tảng số toàn diện, kết hợp họp trực
+              tuyến thông minh, công cụ đào tạo từ xa và
+              trợ lý AI, giúp tổ chức xây dựng lớp học &amp; phòng
+              họp online sống động như thực tế.
+            </p>
+            <div class="hero-badges">
+              <div class="badge">
+                <div class="badge-dot"></div>
+                Dành cho trường học, doanh nghiệp, cộng đồng học
+                tập
+              </div>
+              <div class="badge">
+                <div class="badge-dot"></div>
+                Đa nền tảng: Web · Desktop · Mobile
+              </div>
+              <div class="badge">
+                <div class="badge-dot"></div>
+                Chú trọng bảo mật &amp; quyền riêng tư
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button
+                class="btn-primary"
+                onclick="alert('Demo đang được triển khai theo đúng lộ trình. Dự kiến hoàn tất vào tháng 12/2025.')">
+                Đăng ký demo ngay <span>↗</span>
+              </button>
+              <button
+                class="btn-ghost"
+                onclick="document.getElementById('tinh-nang').scrollIntoView({behavior:'smooth'})">
+                Xem tính năng chi tiết
+              </button>
+            </div>
+            <div class="hero-meta">
+              <div class="meta-pill">
+                <span></span> Hạ tầng sẵn sàng mở rộng toàn cầu
+              </div>
+              <div class="meta-pill">
+                <span></span> Tùy chỉnh thương hiệu cho từng đơn
+                vị
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual-wrap reveal reveal-delay-2">
+            <div class="hero-card">
+              <div class="hero-blur"></div>
+              <div class="hero-rings"></div>
+              <div class="hero-card-header">
+                <div class="hero-card-room">
+                  <strong>Phòng họp:
+                    EDU–Global-01</strong><br />
+                  Đang trực tuyến · 124 người tham gia
                 </div>
-            </header>
-
-            <!-- HERO -->
-            <section class="hero" id="gioi-thieu">
-                <div class="container hero-grid">
-                    <div class="reveal">
-                        <div class="hero-kicker">
-                            <div class="hero-kicker-dot"></div>
-                            Nền tảng kết nối cho giáo dục &amp; họp trực tuyến
-                        </div>
-                        <h1 class="hero-title">
-                            Định nghĩa lại <span>học tập &amp; làm việc từ
-                                xa</span> với AI.
-                        </h1>
-                        <p class="hero-sub">
-                            Legatalk là nền tảng số toàn diện, kết hợp họp trực
-                            tuyến thông minh, công cụ đào tạo từ xa và
-                            trợ lý AI, giúp tổ chức xây dựng lớp học &amp; phòng
-                            họp online sống động như thực tế.
-                        </p>
-                        <div class="hero-badges">
-                            <div class="badge">
-                                <div class="badge-dot"></div>
-                                Dành cho trường học, doanh nghiệp, cộng đồng học
-                                tập
-                            </div>
-                            <div class="badge">
-                                <div class="badge-dot"></div>
-                                Đa nền tảng: Web · Desktop · Mobile
-                            </div>
-                            <div class="badge">
-                                <div class="badge-dot"></div>
-                                Chú trọng bảo mật &amp; quyền riêng tư
-                            </div>
-                        </div>
-                        <div class="hero-actions">
-                            <button
-                                class="btn-primary"
-                                onclick="alert('Demo đang được triển khai theo đúng lộ trình. Dự kiến hoàn tất vào tháng 12/2025.')">
-                                Đăng ký demo ngay <span>↗</span>
-                            </button>
-                            <button
-                                class="btn-ghost"
-                                onclick="document.getElementById('tinh-nang').scrollIntoView({behavior:'smooth'})">
-                                Xem tính năng chi tiết
-                            </button>
-                        </div>
-                        <div class="hero-meta">
-                            <div class="meta-pill">
-                                <span></span> Hạ tầng sẵn sàng mở rộng toàn cầu
-                            </div>
-                            <div class="meta-pill">
-                                <span></span> Tùy chỉnh thương hiệu cho từng đơn
-                                vị
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="hero-visual-wrap reveal reveal-delay-2">
-                        <div class="hero-card">
-                            <div class="hero-blur"></div>
-                            <div class="hero-rings"></div>
-                            <div class="hero-card-header">
-                                <div class="hero-card-room">
-                                    <strong>Phòng họp:
-                                        EDU–Global-01</strong><br />
-                                    Đang trực tuyến · 124 người tham gia
-                                </div>
-                                <div class="hero-card-pill">
-                                    <div class="hero-card-pill-dot"></div>
-                                    AI đang ghi chép &amp; tóm tắt
-                                </div>
-                            </div>
-                            <div class="hero-participants">
-                                <div class="avatar">
-                                    <div class="avatar-circle">GV</div>
-                                    <div class="avatar-info">
-                                        <div class="avatar-name">Giảng viên
-                                            chính</div>
-                                        <div class="avatar-role">Điều phối buổi
-                                            học</div>
-                                    </div>
-                                </div>
-                                <div class="avatar">
-                                    <div class="avatar-circle">AI</div>
-                                    <div class="avatar-info">
-                                        <div class="avatar-name">Lega AI</div>
-                                        <div class="avatar-role">Tự động ghi
-                                            biên bản &amp; dịch</div>
-                                    </div>
-                                </div>
-                                <div class="avatar">
-                                    <div class="avatar-circle">HR</div>
-                                    <div class="avatar-info">
-                                        <div class="avatar-name">Phòng đào
-                                            tạo</div>
-                                        <div class="avatar-role">Theo dõi tiến
-                                            độ nhân sự</div>
-                                    </div>
-                                </div>
-                                <div class="avatar">
-                                    <div class="avatar-circle">ST</div>
-                                    <div class="avatar-info">
-                                        <div class="avatar-name">Học viên</div>
-                                        <div class="avatar-role">Học tập từ mọi
-                                            nơi</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="hero-timeline">
-                                <div>Buổi học: 02/10 · Lộ trình Onboarding</div>
-                                <div class="hero-timeline-bar">
-                                    <div class="hero-timeline-progress"></div>
-                                </div>
-                            </div>
-
-                            <div class="hero-stats">
-                                <div class="stat-pill">⏱ 1.5 tỷ+ học sinh từng
-                                    phải học từ xa</div>
-                                <div class="stat-pill">
-                                    📊 Đo lường tương tác &amp; kết quả học tập
-                                    theo thời gian thực
-                                </div>
-                                <div class="stat-pill">🔐 Mã hóa &amp; phân
-                                    quyền cho từng vai trò</div>
-                            </div>
-
-                            <div class="hero-floating-tag">
-                                <span></span> AI đã tóm tắt 3 ý chính cho đội
-                                ngũ quản lý
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero-card-pill">
+                  <div class="hero-card-pill-dot"></div>
+                  AI đang ghi chép &amp; tóm tắt
                 </div>
-            </section>
-
-            <!-- VẤN ĐỀ & CƠ HỘI -->
-            <section id="van-de">
-                <div class="container">
-                    <div class="section-header reveal">
-                        <div class="section-title-wrap">
-                            <div class="section-eyebrow">Vấn đề hiện tại trên
-                                thị trường</div>
-                            <h2 class="section-title">Công cụ hiện có chưa sinh
-                                ra cho giáo dục &amp; đào tạo nội bộ.</h2>
-                            <p class="section-desc">
-                                Phần lớn nền tảng họp trực tuyến tập trung cho
-                                hội họp doanh nghiệp chung chung, thiếu “linh
-                                hồn lớp học” và những công cụ đo lường – giám
-                                sát – trò chơi hóa nội dung.
-                            </p>
-                        </div>
-                        <div class="section-tag">
-                            Legatalk được xây dựng từ bài toán giáo dục &amp;
-                            đào tạo, không phải ngược lại.
-                        </div>
-                    </div>
-
-                    <div class="problem-highlight">
-                        <div class="card reveal reveal-delay-1">
-                            <h3 class="card-title">Những hạn chế lớn hiện
-                                nay</h3>
-                            <p class="card-sub">
-                                Dù số hóa diễn ra mạnh mẽ, các tổ chức vẫn gặp
-                                khó khi chuyển đổi lên môi trường online.
-                            </p>
-                            <ul class="card-list">
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Không tối ưu cho lớp
-                                            học:</strong> thiếu bảng trắng, bài
-                                        kiểm tra nhanh, quản lý
-                                        nội dung học liệu theo lộ trình.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Đào tạo nội bộ rời rạc:</strong>
-                                        khó theo dõi tiến độ, không có báo cáo
-                                        hiệu suất
-                                        học tập rõ ràng cho từng cá nhân.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Tương tác hạn chế:</strong> hỏi
-                                        – đáp, thảo luận nhóm, game hóa thường
-                                        phải ghép
-                                        nhiều công cụ rời.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Thiếu AI trợ lực:</strong> gần
-                                        như không có tính năng tóm tắt, gợi ý
-                                        phản hồi, dịch
-                                        trực tiếp hay cá nhân hóa lộ trình.
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="card soft reveal reveal-delay-2"
-                            id="co-hoi">
-                            <h3 class="card-title">Cơ hội từ chuyển đổi số &amp;
-                                AI</h3>
-                            <p class="card-sub">
-                                Nhu cầu học từ xa, làm việc hybrid và đào tạo
-                                online không còn là xu hướng ngắn hạn – mà là
-                                chuẩn mực mới.
-                            </p>
-
-                            <div class="stat-grid">
-                                <div class="stat-card">
-                                    <div class="stat-value">1.5B+</div>
-                                    <div class="stat-label">Học sinh/sinh viên
-                                        từng bị ảnh hưởng bởi COVID-19.</div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-value">Hybrid</div>
-                                    <div class="stat-label">Mô hình làm việc kết
-                                        hợp duy trì ở nhiều ngành.</div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-value">Quốc gia</div>
-                                    <div class="stat-label">
-                                        Chính phủ thúc đẩy giáo dục số &amp;
-                                        quản lý online.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pill-row">
-                                <div class="pill">AI giúp cá nhân hóa nội dung
-                                    &amp; gợi ý lộ trình</div>
-                                <div class="pill">Cơ hội dẫn đầu tại thị trường
-                                    mới nổi</div>
-                                <div class="pill">Kết nối giáo dục – doanh
-                                    nghiệp – cộng đồng</div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div class="hero-participants">
+                <div class="avatar">
+                  <div class="avatar-circle">GV</div>
+                  <div class="avatar-info">
+                    <div class="avatar-name">Giảng viên
+                      chính</div>
+                    <div class="avatar-role">Điều phối buổi
+                      học</div>
+                  </div>
                 </div>
-            </section>
-
-            <!-- TẦM NHÌN & SỨ MỆNH -->
-            <section id="tam-nhin">
-                <div class="container">
-                    <div class="section-header reveal">
-                        <div class="section-title-wrap">
-                            <div class="section-eyebrow">Tầm nhìn dự án</div>
-                            <h2 class="section-title">
-                                Nền tảng hội nghị &amp; giáo dục trực tuyến hàng
-                                đầu ứng dụng AI.
-                            </h2>
-                            <p class="section-desc">
-                                Legatalk hướng tới trở thành “hạ tầng giao tiếp”
-                                cho giáo dục và doanh nghiệp – nơi việc học,
-                                họp và cộng tác được hỗ trợ bởi AI nhưng vẫn giữ
-                                trung tâm là con người.
-                            </p>
-                        </div>
-                        <div class="section-tag">
-                            Bảo mật làm trọng tâm · Đổi mới liên tục · Truy cập
-                            công bằng
-                        </div>
-                    </div>
-
-                    <div class="grid-2">
-                        <div class="card reveal">
-                            <h3 class="card-title">Tầm nhìn</h3>
-                            <p class="card-sub">
-                                Không chỉ dừng lại ở một ứng dụng gọi video,
-                                Legatalk là hệ sinh thái mở cho giáo viên, học
-                                viên, doanh nghiệp và cộng đồng tri thức.
-                            </p>
-                            <ul class="card-list">
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        Kết nối giáo dục, doanh nghiệp và cộng
-                                        đồng trong một nền tảng thống nhất.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        AI hỗ trợ cá nhân hóa nội dung, lộ trình
-                                        học và báo cáo cho từng nhóm người dùng.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        Đảm bảo bảo mật &amp; quyền riêng tư
-                                        theo tiêu chuẩn cao, minh bạch trong
-                                        cách dùng dữ
-                                        liệu.
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="card soft reveal reveal-delay-1">
-                            <h3 class="card-title">Sứ mệnh</h3>
-                            <p class="card-sub">
-                                Định nghĩa lại trải nghiệm “làm từ xa” – nơi mỗi
-                                buổi họp hay lớp học online đều rõ ràng, hiệu
-                                quả và trọn vẹn như gặp trực tiếp.
-                            </p>
-                            <ul class="card-list">
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Hiệu suất làm việc:</strong> tối
-                                        ưu thời gian họp, giúp đội ngũ tập trung
-                                        vào quyết
-                                        định thay vì thao tác kỹ thuật.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Bảo mật:</strong> ứng dụng các
-                                        cơ chế mã hóa, phân quyền nhiều lớp,
-                                        kiểm soát truy
-                                        cập theo vai trò.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>AI cho giáo dục:</strong> tóm
-                                        tắt nội dung, gợi ý bài tập, dịch đa
-                                        ngôn ngữ, đề xuất
-                                        nhắc học.
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="pill-row">
-                                <div class="pill">Định nghĩa lại lớp học trực
-                                    tuyến</div>
-                                <div class="pill">Tối ưu chi phí &amp; hiệu quả
-                                    đào tạo</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="avatar">
+                  <div class="avatar-circle">AI</div>
+                  <div class="avatar-info">
+                    <div class="avatar-name">Lega AI</div>
+                    <div class="avatar-role">Tự động ghi
+                      biên bản &amp; dịch</div>
+                  </div>
                 </div>
-            </section>
-
-            <!-- KHÁCH HÀNG & TÍNH NĂNG -->
-            <section id="tinh-nang">
-                <div class="container">
-                    <div class="section-header reveal">
-                        <div class="section-title-wrap">
-                            <div class="section-eyebrow">Khách hàng &amp; tính
-                                năng</div>
-                            <h2 class="section-title">
-                                Thiết kế cho 3 nhóm: giáo dục, doanh nghiệp
-                                &amp; cá nhân học tập.
-                            </h2>
-                            <p class="section-desc">
-                                Từ lớp học phổ thông, đại học, trung tâm đào tạo
-                                cho đến đội ngũ nhân sự nội bộ, Legatalk cung
-                                cấp đầy đủ công cụ để triển khai lộ trình học
-                                &amp; làm việc từ xa một cách có cấu trúc.
-                            </p>
-                        </div>
-                        <div class="section-tag">
-                            Hỗ trợ đào tạo ở cả vùng sâu – vùng xa với hạ tầng
-                            nhẹ, dễ tiếp cận.
-                        </div>
-                    </div>
-
-                    <div class="grid-2">
-                        <div class="card reveal">
-                            <h3 class="card-title">Nhóm khách hàng chính</h3>
-                            <p class="card-sub">
-                                Legatalk nhắm tới các đơn vị đã quen hoặc đang
-                                chuyển đổi sang môi trường online.
-                            </p>
-                            <ul class="card-list">
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Trường học &amp; tổ chức giáo
-                                            dục:</strong> dạy – học online, kiểm
-                                        tra, quản lý lớp
-                                        &amp; theo dõi tiến độ.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Doanh nghiệp:</strong> đào tạo
-                                        nội bộ, onboarding nhân viên, chia sẻ
-                                        tri thức nội bộ
-                                        theo lộ trình.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Cá nhân &amp; cộng đồng học
-                                            tập:</strong> nhóm nghiên cứu, cộng
-                                        đồng chuyên môn, câu
-                                        lạc bộ.
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <div class="stat-grid" style="margin-top:12px;">
-                                <div class="stat-card">
-                                    <div class="stat-value">~90%</div>
-                                    <div class="stat-label">Trọng tâm vào khối
-                                        giáo dục &amp; cơ quan công.</div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-value">~20%</div>
-                                    <div class="stat-label">Doanh nghiệp vừa và
-                                        lớn – theo đà tăng trưởng.</div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-value">15%</div>
-                                    <div class="stat-label">Cá nhân, nhóm nghiên
-                                        cứu &amp; cộng đồng.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card soft reveal reveal-delay-1">
-                            <h3 class="card-title">Tính năng nổi bật</h3>
-                            <ul class="card-list">
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div><strong>Đa nền tảng:</strong> hoạt động
-                                        trên Web, desktop, iOS, Android.</div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>AI thông minh:</strong> tóm tắt
-                                        buổi họp, gợi ý phản hồi, dịch đa ngôn
-                                        ngữ theo thời
-                                        gian thực.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Công cụ dạy &amp; học:</strong>
-                                        bảng trắng, quiz nhanh, quản lý bài
-                                        giảng, điểm danh,
-                                        bảng điểm.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Bảo mật &amp; phân
-                                            quyền:</strong> tùy chỉnh quyền truy
-                                        cập, kiểm soát người tham gia,
-                                        ghi hình an toàn.
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="pill-row">
-                                <div class="pill">Kết hợp AI &amp; dữ liệu
-                                    lớn</div>
-                                <div class="pill">Tùy chỉnh theo mô hình từng tổ
-                                    chức</div>
-                                <div class="pill">API &amp; SDK dễ tích
-                                    hợp</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SO SÁNH ĐỐI THỦ -->
-                    <div class="card reveal" style="margin-top:24px;">
-                        <h3 class="card-title">So sánh Legatalk với các nền tảng
-                            họp trực tuyến phổ biến</h3>
-                        <p class="card-sub">
-                            Trước khi so sánh, cần nhấn mạnh: Legatalk được
-                            thiết kế từ đầu cho giáo dục &amp; đào tạo – không
-                            chỉ đơn thuần là một công cụ gọi video.
-                        </p>
-                        <div class="compare-table">
-                            <div>
-                                <div class="compare-col-title">
-                                    Legatalk <span class="compare-badge">Tập
-                                        trung giáo dục &amp; AI</span>
-                                </div>
-                                <div class="compare-item">
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        Tích hợp AI sâu: tóm tắt, dịch, gợi ý
-                                        nội dung &amp; câu hỏi cho người dạy –
-                                        người học.
-                                    </div>
-                                </div>
-                                <div class="compare-item">
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        Đầy đủ công cụ lớp học: lớp ảo, bài tập,
-                                        kiểm tra, quản lý điểm &amp; lộ trình
-                                        học.
-                                    </div>
-                                </div>
-                                <div class="compare-item">
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        Mô hình mở, có API/SDK cho phép gắn vào
-                                        nền tảng sẵn có của trường/đơn vị.
-                                    </div>
-                                </div>
-                                <div class="compare-item">
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        Cơ chế bảo mật, phân vùng dữ liệu rõ
-                                        ràng, phù hợp với tiêu chuẩn của tổ
-                                        chức.
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="compare-col-title">
-                                    Nền tảng họp thông thường
-                                    <span class="compare-badge-alt">Tối ưu hội
-                                        họp chung</span>
-                                </div>
-                                <div class="compare-item">
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        Tập trung vào cuộc họp ngắn hạn, ít công
-                                        cụ đánh giá &amp; theo dõi quá trình
-                                        học.
-                                    </div>
-                                </div>
-                                <div class="compare-item">
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        Hạn chế trong việc tùy chỉnh trải nghiệm
-                                        lớp học hoặc hệ thống đào tạo chuyên
-                                        sâu.
-                                    </div>
-                                </div>
-                                <div class="compare-item">
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        Khó tích hợp sâu vào hạ tầng giáo dục,
-                                        hệ thống quản lý học tập nội bộ.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="avatar">
+                  <div class="avatar-circle">HR</div>
+                  <div class="avatar-info">
+                    <div class="avatar-name">Phòng đào
+                      tạo</div>
+                    <div class="avatar-role">Theo dõi tiến
+                      độ nhân sự</div>
+                  </div>
                 </div>
-            </section>
-
-            <!-- MÔ HÌNH DOANH THU & CƠ HỘI KINH DOANH -->
-            <section id="co-hoi-kinh-doanh">
-                <div class="container">
-                    <div class="section-header reveal">
-                        <div class="section-title-wrap">
-                            <div class="section-eyebrow">Mô hình doanh thu &amp;
-                                cơ hội</div>
-                            <h2 class="section-title">
-                                Từ gói miễn phí đến giải pháp AI tùy chỉnh cho
-                                từng tổ chức.
-                            </h2>
-                            <p class="section-desc">
-                                Legatalk linh hoạt trong mô hình thương mại: vừa
-                                phục vụ cộng đồng, vừa đáp ứng yêu cầu khắt khe
-                                của tổ chức lớn với các gói cao cấp &amp; dịch
-                                vụ riêng.
-                            </p>
-                        </div>
-                        <div class="section-tag">
-                            Đồng hành cùng chiến lược chuyển đổi số quốc gia
-                            &amp; giáo dục 4.0.
-                        </div>
-                    </div>
-
-                    <div class="pricing-grid">
-                        <div class="price-card reveal">
-                            <div class="price-name">Gói miễn phí</div>
-                            <div class="price-tagline">Dành cho cá nhân &amp;
-                                cộng đồng học tập nhỏ.</div>
-                            <div class="price-label">Bắt đầu nhanh – không ràng
-                                buộc.</div>
-                            <div class="price-feature">• Họp &amp; học online
-                                với số lượng người tham gia giới hạn.</div>
-                            <div class="price-feature">• Một số tính năng AI cơ
-                                bản.</div>
-                            <div class="price-feature">• Phù hợp thử nghiệm
-                                &amp; nhóm nhỏ.</div>
-                        </div>
-
-                        <div class="price-card reveal reveal-delay-1">
-                            <div class="price-name">Gói chuyên nghiệp</div>
-                            <div class="price-tagline">
-                                Cho trường học, trung tâm đào tạo &amp; doanh
-                                nghiệp.
-                            </div>
-                            <div class="price-label">Tùy biến theo quy mô &amp;
-                                tính năng.</div>
-                            <div class="price-feature">• Quản lý lớp, phòng học
-                                &amp; lịch đào tạo tập trung.</div>
-                            <div class="price-feature">
-                                • AI nâng cao: báo cáo hiệu suất, theo dõi hành
-                                trình học.
-                            </div>
-                            <div class="price-feature">
-                                • Hỗ trợ triển khai &amp; đào tạo đội ngũ sử
-                                dụng.
-                            </div>
-                        </div>
-
-                        <div class="price-card reveal reveal-delay-2">
-                            <div class="price-name">API &amp; Dịch vụ tùy
-                                chỉnh</div>
-                            <div class="price-tagline">Dành cho nền tảng &amp;
-                                hệ thống lớn cần tích hợp sâu.</div>
-                            <div class="price-label">Giải pháp “Legatalk
-                                inside”.</div>
-                            <div class="price-feature">
-                                • API, SDK để tích hợp vào cổng điện tử &amp;
-                                LMS hiện có.
-                            </div>
-                            <div class="price-feature">
-                                • Tùy chỉnh giao diện theo thương hiệu của đối
-                                tác.
-                            </div>
-                            <div class="price-feature">
-                                • Phân tích dữ liệu, AI cá nhân hóa chuyên sâu.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card soft reveal" style="margin-top:24px;">
-                        <h3 class="card-title">Cơ hội kinh doanh &amp; mở
-                            rộng</h3>
-                        <p class="card-sub">
-                            Thị trường học trực tuyến &amp; họp từ xa toàn cầu
-                            tiếp tục tăng trưởng mạnh, đặc biệt tại các
-                            nước đang phát triển.
-                        </p>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-phase">Giai đoạn 1</div>
-                                <div class="timeline-title">Tập trung vào giáo
-                                    dục &amp; doanh nghiệp tại Việt Nam</div>
-                                <div class="timeline-desc">
-                                    Triển khai thí điểm ở trường học, trung tâm
-                                    đào tạo và một số doanh nghiệp.
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-phase">Giai đoạn 2</div>
-                                <div class="timeline-title">Mở rộng sang Đông
-                                    Nam Á &amp; thị trường mới nổi</div>
-                                <div class="timeline-desc">
-                                    Tận dụng cơ hội từ chương trình chuyển đổi
-                                    số quốc gia &amp; khu vực.
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-phase">Giai đoạn 3</div>
-                                <div class="timeline-title">Hệ sinh thái AI giáo
-                                    dục toàn diện</div>
-                                <div class="timeline-desc">
-                                    Kết nối nhiều dịch vụ bổ trợ: kho học liệu,
-                                    đánh giá kỹ năng, chứng chỉ số.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="avatar">
+                  <div class="avatar-circle">ST</div>
+                  <div class="avatar-info">
+                    <div class="avatar-name">Học viên</div>
+                    <div class="avatar-role">Học tập từ mọi
+                      nơi</div>
+                  </div>
                 </div>
-            </section>
-
-            <!-- FAQ & TÀI LIỆU DỰ ÁN -->
-            <section id="faq">
-                <div class="container">
-                    <div class="section-header reveal">
-                        <div class="section-title-wrap">
-                            <div class="section-eyebrow">Câu hỏi thường gặp
-                                &amp; tài liệu dự án</div>
-                            <h2 class="section-title">Giải đáp nhanh cho nhà
-                                trường, doanh nghiệp &amp; đối tác.</h2>
-                            <p class="section-desc">
-                                Cùng một nền tảng nhưng mỗi đối tượng sử dụng
-                                theo cách khác nhau. Dưới đây là một số câu hỏi
-                                thường gặp và tài liệu tham khảo của dự án.
-                            </p>
-                        </div>
-                        <div class="section-tag">
-                            Tài liệu chi tiết sẽ được cung cấp khi làm việc trực
-                            tiếp với đội ngũ Legatalk.
-                        </div>
-                    </div>
-
-                    <div class="faq-grid">
-                        <div class="card reveal">
-                            <h3 class="card-title">Câu hỏi thường gặp</h3>
-                            <div class="faq-item">
-                                <div class="faq-q">Legatalk khác gì so với các
-                                    nền tảng họp miễn phí?</div>
-                                <div class="faq-a">
-                                    Legatalk tập trung cho giáo dục và đào tạo
-                                    nội bộ, có AI hỗ trợ, công cụ lớp học và khả
-                                    năng
-                                    tích hợp sâu vào hệ thống hiện có.
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <div class="faq-q">Dữ liệu học viên &amp; nhân
-                                    viên có an toàn không?</div>
-                                <div class="faq-a">
-                                    Nền tảng sử dụng các lớp mã hóa, phân quyền
-                                    theo vai trò và tuân thủ tiêu chuẩn bảo mật.
-                                    Chi
-                                    tiết có thể cấu hình theo yêu cầu từng tổ
-                                    chức.
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <div class="faq-q">Có thể triển khai riêng cho
-                                    một trường hoặc doanh nghiệp không?</div>
-                                <div class="faq-a">
-                                    Có. Legatalk hỗ trợ triển khai dedicated
-                                    server, tên miền &amp; thương hiệu riêng của
-                                    đối tác.
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <div class="faq-q">AI có thay thế giáo viên hoặc
-                                    người đào tạo không?</div>
-                                <div class="faq-a">
-                                    AI chỉ đóng vai trò trợ lý: ghi chép, tóm
-                                    tắt, gợi ý và nhắc nhở. Quyết định &amp; nội
-                                    dung
-                                    chuyên môn vẫn do con người giữ vai trò
-                                    trung tâm.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card soft reveal reveal-delay-1">
-                            <h3 class="card-title">Tài liệu dự án &amp; liên
-                                quan</h3>
-                            <ul class="doc-list">
-                                <li class="doc-item">
-                                    <div class="doc-info">
-                                        <div class="doc-dot"></div>
-                                        <div>
-                                            <div>Slide giới thiệu dự án
-                                                Legatalk</div>
-                                            <div class="doc-label">Tổng quan ·
-                                                Tầm nhìn · Mô hình kinh
-                                                doanh</div>
-                                        </div>
-                                    </div>
-                                    <div class="doc-label">PDF</div>
-                                </li>
-                                <li class="doc-item">
-                                    <div class="doc-info">
-                                        <div class="doc-dot"></div>
-                                        <div>
-                                            <div>One-page cho nhà trường &amp;
-                                                doanh nghiệp</div>
-                                            <div class="doc-label">Giải pháp
-                                                triển khai thực tế</div>
-                                        </div>
-                                    </div>
-                                    <div class="doc-label">Draft</div>
-                                </li>
-                                <li class="doc-item">
-                                    <div class="doc-info">
-                                        <div class="doc-dot"></div>
-                                        <div>
-                                            <div>Tài liệu API &amp; SDK</div>
-                                            <div class="doc-label">Tích hợp với
-                                                LMS, cổng nội bộ</div>
-                                        </div>
-                                    </div>
-                                    <div class="doc-label">Coming soon</div>
-                                </li>
-                            </ul>
-                            <p class="cta-note" style="margin-top:10px;">
-                                Liên hệ đội ngũ để nhận bộ tài liệu chi tiết,
-                                demo hệ thống và tư vấn mô hình triển khai phù
-                                hợp.
-                            </p>
-                        </div>
-                    </div>
+              </div>
+              <div class="hero-timeline">
+                <div>Buổi học: 02/10 · Lộ trình Onboarding</div>
+                <div class="hero-timeline-bar">
+                  <div class="hero-timeline-progress"></div>
                 </div>
-            </section>
+              </div>
 
-            <!-- ỨNG DỤNG DI ĐỘNG – ANDROID -->
-            <section id="ung-dung">
-                <div class="container">
-                    <div class="section-header reveal">
-                        <div class="section-title-wrap">
-                            <div class="section-eyebrow">Ứng dụng di động</div>
-                            <h2 class="section-title">Cài đặt Legatalk trên
-                                thiết bị Android.</h2>
-                            <p class="section-desc">
-                                Trải nghiệm phòng họp &amp; lớp học Legatalk
-                                trực tiếp trên điện thoại Android: tối ưu cho
-                                camera, micro, chất lượng kết nối và thông báo
-                                theo thời gian thực.
-                            </p>
-                        </div>
-                        <div class="section-tag">APK riêng cho đối tác &amp;
-                            người dùng trải nghiệm sớm.</div>
+              <div class="hero-stats">
+                <div class="stat-pill">⏱ 1.5 tỷ+ học sinh từng
+                  phải học từ xa</div>
+                <div class="stat-pill">
+                  📊 Đo lường tương tác &amp; kết quả học tập
+                  theo thời gian thực
+                </div>
+                <div class="stat-pill">🔐 Mã hóa &amp; phân
+                  quyền cho từng vai trò</div>
+              </div>
+
+              <div class="hero-floating-tag">
+                <span></span> AI đã tóm tắt 3 ý chính cho đội
+                ngũ quản lý
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VẤN ĐỀ & CƠ HỘI -->
+      <section id="van-de">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-title-wrap">
+              <div class="section-eyebrow">Vấn đề hiện tại trên
+                thị trường</div>
+              <h2 class="section-title">Công cụ hiện có chưa sinh
+                ra cho giáo dục &amp; đào tạo nội bộ.</h2>
+              <p class="section-desc">
+                Phần lớn nền tảng họp trực tuyến tập trung cho
+                hội họp doanh nghiệp chung chung, thiếu “linh
+                hồn lớp học” và những công cụ đo lường – giám
+                sát – trò chơi hóa nội dung.
+              </p>
+            </div>
+            <div class="section-tag">
+              Legatalk được xây dựng từ bài toán giáo dục &amp;
+              đào tạo, không phải ngược lại.
+            </div>
+          </div>
+
+          <div class="problem-highlight">
+            <div class="card reveal reveal-delay-1">
+              <h3 class="card-title">Những hạn chế lớn hiện
+                nay</h3>
+              <p class="card-sub">
+                Dù số hóa diễn ra mạnh mẽ, các tổ chức vẫn gặp
+                khó khi chuyển đổi lên môi trường online.
+              </p>
+              <ul class="card-list">
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Không tối ưu cho lớp
+                      học:</strong> thiếu bảng trắng, bài
+                    kiểm tra nhanh, quản lý
+                    nội dung học liệu theo lộ trình.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Đào tạo nội bộ rời rạc:</strong>
+                    khó theo dõi tiến độ, không có báo cáo
+                    hiệu suất
+                    học tập rõ ràng cho từng cá nhân.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Tương tác hạn chế:</strong> hỏi
+                    – đáp, thảo luận nhóm, game hóa thường
+                    phải ghép
+                    nhiều công cụ rời.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Thiếu AI trợ lực:</strong> gần
+                    như không có tính năng tóm tắt, gợi ý
+                    phản hồi, dịch
+                    trực tiếp hay cá nhân hóa lộ trình.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card soft reveal reveal-delay-2"
+              id="co-hoi">
+              <h3 class="card-title">Cơ hội từ chuyển đổi số &amp;
+                AI</h3>
+              <p class="card-sub">
+                Nhu cầu học từ xa, làm việc hybrid và đào tạo
+                online không còn là xu hướng ngắn hạn – mà là
+                chuẩn mực mới.
+              </p>
+
+              <div class="stat-grid">
+                <div class="stat-card">
+                  <div class="stat-value">1.5B+</div>
+                  <div class="stat-label">Học sinh/sinh viên
+                    từng bị ảnh hưởng bởi COVID-19.</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value">Hybrid</div>
+                  <div class="stat-label">Mô hình làm việc kết
+                    hợp duy trì ở nhiều ngành.</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value">Quốc gia</div>
+                  <div class="stat-label">
+                    Chính phủ thúc đẩy giáo dục số &amp;
+                    quản lý online.
+                  </div>
+                </div>
+              </div>
+
+              <div class="pill-row">
+                <div class="pill">AI giúp cá nhân hóa nội dung
+                  &amp; gợi ý lộ trình</div>
+                <div class="pill">Cơ hội dẫn đầu tại thị trường
+                  mới nổi</div>
+                <div class="pill">Kết nối giáo dục – doanh
+                  nghiệp – cộng đồng</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TẦM NHÌN & SỨ MỆNH -->
+      <section id="tam-nhin">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-title-wrap">
+              <div class="section-eyebrow">Tầm nhìn dự án</div>
+              <h2 class="section-title">
+                Nền tảng hội nghị &amp; giáo dục trực tuyến hàng
+                đầu ứng dụng AI.
+              </h2>
+              <p class="section-desc">
+                Legatalk hướng tới trở thành “hạ tầng giao tiếp”
+                cho giáo dục và doanh nghiệp – nơi việc học,
+                họp và cộng tác được hỗ trợ bởi AI nhưng vẫn giữ
+                trung tâm là con người.
+              </p>
+            </div>
+            <div class="section-tag">
+              Bảo mật làm trọng tâm · Đổi mới liên tục · Truy cập
+              công bằng
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card reveal">
+              <h3 class="card-title">Tầm nhìn</h3>
+              <p class="card-sub">
+                Không chỉ dừng lại ở một ứng dụng gọi video,
+                Legatalk là hệ sinh thái mở cho giáo viên, học
+                viên, doanh nghiệp và cộng đồng tri thức.
+              </p>
+              <ul class="card-list">
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    Kết nối giáo dục, doanh nghiệp và cộng
+                    đồng trong một nền tảng thống nhất.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    AI hỗ trợ cá nhân hóa nội dung, lộ trình
+                    học và báo cáo cho từng nhóm người dùng.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    Đảm bảo bảo mật &amp; quyền riêng tư
+                    theo tiêu chuẩn cao, minh bạch trong
+                    cách dùng dữ
+                    liệu.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card soft reveal reveal-delay-1">
+              <h3 class="card-title">Sứ mệnh</h3>
+              <p class="card-sub">
+                Định nghĩa lại trải nghiệm “làm từ xa” – nơi mỗi
+                buổi họp hay lớp học online đều rõ ràng, hiệu
+                quả và trọn vẹn như gặp trực tiếp.
+              </p>
+              <ul class="card-list">
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Hiệu suất làm việc:</strong> tối
+                    ưu thời gian họp, giúp đội ngũ tập trung
+                    vào quyết
+                    định thay vì thao tác kỹ thuật.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Bảo mật:</strong> ứng dụng các
+                    cơ chế mã hóa, phân quyền nhiều lớp,
+                    kiểm soát truy
+                    cập theo vai trò.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>AI cho giáo dục:</strong> tóm
+                    tắt nội dung, gợi ý bài tập, dịch đa
+                    ngôn ngữ, đề xuất
+                    nhắc học.
+                  </div>
+                </li>
+              </ul>
+              <div class="pill-row">
+                <div class="pill">Định nghĩa lại lớp học trực
+                  tuyến</div>
+                <div class="pill">Tối ưu chi phí &amp; hiệu quả
+                  đào tạo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KHÁCH HÀNG & TÍNH NĂNG -->
+      <section id="tinh-nang">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-title-wrap">
+              <div class="section-eyebrow">Khách hàng &amp; tính
+                năng</div>
+              <h2 class="section-title">
+                Thiết kế cho 3 nhóm: giáo dục, doanh nghiệp
+                &amp; cá nhân học tập.
+              </h2>
+              <p class="section-desc">
+                Từ lớp học phổ thông, đại học, trung tâm đào tạo
+                cho đến đội ngũ nhân sự nội bộ, Legatalk cung
+                cấp đầy đủ công cụ để triển khai lộ trình học
+                &amp; làm việc từ xa một cách có cấu trúc.
+              </p>
+            </div>
+            <div class="section-tag">
+              Hỗ trợ đào tạo ở cả vùng sâu – vùng xa với hạ tầng
+              nhẹ, dễ tiếp cận.
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card reveal">
+              <h3 class="card-title">Nhóm khách hàng chính</h3>
+              <p class="card-sub">
+                Legatalk nhắm tới các đơn vị đã quen hoặc đang
+                chuyển đổi sang môi trường online.
+              </p>
+              <ul class="card-list">
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Trường học &amp; tổ chức giáo
+                      dục:</strong> dạy – học online, kiểm
+                    tra, quản lý lớp
+                    &amp; theo dõi tiến độ.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Doanh nghiệp:</strong> đào tạo
+                    nội bộ, onboarding nhân viên, chia sẻ
+                    tri thức nội bộ
+                    theo lộ trình.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Cá nhân &amp; cộng đồng học
+                      tập:</strong> nhóm nghiên cứu, cộng
+                    đồng chuyên môn, câu
+                    lạc bộ.
+                  </div>
+                </li>
+              </ul>
+
+              <div class="stat-grid" style="margin-top:12px;">
+                <div class="stat-card">
+                  <div class="stat-value">~90%</div>
+                  <div class="stat-label">Trọng tâm vào khối
+                    giáo dục &amp; cơ quan công.</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value">~20%</div>
+                  <div class="stat-label">Doanh nghiệp vừa và
+                    lớn – theo đà tăng trưởng.</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value">15%</div>
+                  <div class="stat-label">Cá nhân, nhóm nghiên
+                    cứu &amp; cộng đồng.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card soft reveal reveal-delay-1">
+              <h3 class="card-title">Tính năng nổi bật</h3>
+              <ul class="card-list">
+                <li>
+                  <div class="card-bullet"></div>
+                  <div><strong>Đa nền tảng:</strong> hoạt động
+                    trên Web, desktop, iOS, Android.</div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>AI thông minh:</strong> tóm tắt
+                    buổi họp, gợi ý phản hồi, dịch đa ngôn
+                    ngữ theo thời
+                    gian thực.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Công cụ dạy &amp; học:</strong>
+                    bảng trắng, quiz nhanh, quản lý bài
+                    giảng, điểm danh,
+                    bảng điểm.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Bảo mật &amp; phân
+                      quyền:</strong> tùy chỉnh quyền truy
+                    cập, kiểm soát người tham gia,
+                    ghi hình an toàn.
+                  </div>
+                </li>
+              </ul>
+              <div class="pill-row">
+                <div class="pill">Kết hợp AI &amp; dữ liệu
+                  lớn</div>
+                <div class="pill">Tùy chỉnh theo mô hình từng tổ
+                  chức</div>
+                <div class="pill">API &amp; SDK dễ tích
+                  hợp</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SO SÁNH ĐỐI THỦ -->
+          <div class="card reveal" style="margin-top:24px;">
+            <h3 class="card-title">So sánh Legatalk với các nền tảng
+              họp trực tuyến phổ biến</h3>
+            <p class="card-sub">
+              Trước khi so sánh, cần nhấn mạnh: Legatalk được
+              thiết kế từ đầu cho giáo dục &amp; đào tạo – không
+              chỉ đơn thuần là một công cụ gọi video.
+            </p>
+            <div class="compare-table">
+              <div>
+                <div class="compare-col-title">
+                  Legatalk <span class="compare-badge">Tập
+                    trung giáo dục &amp; AI</span>
+                </div>
+                <div class="compare-item">
+                  <div class="card-bullet"></div>
+                  <div>
+                    Tích hợp AI sâu: tóm tắt, dịch, gợi ý
+                    nội dung &amp; câu hỏi cho người dạy –
+                    người học.
+                  </div>
+                </div>
+                <div class="compare-item">
+                  <div class="card-bullet"></div>
+                  <div>
+                    Đầy đủ công cụ lớp học: lớp ảo, bài tập,
+                    kiểm tra, quản lý điểm &amp; lộ trình
+                    học.
+                  </div>
+                </div>
+                <div class="compare-item">
+                  <div class="card-bullet"></div>
+                  <div>
+                    Mô hình mở, có API/SDK cho phép gắn vào
+                    nền tảng sẵn có của trường/đơn vị.
+                  </div>
+                </div>
+                <div class="compare-item">
+                  <div class="card-bullet"></div>
+                  <div>
+                    Cơ chế bảo mật, phân vùng dữ liệu rõ
+                    ràng, phù hợp với tiêu chuẩn của tổ
+                    chức.
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="compare-col-title">
+                  Nền tảng họp thông thường
+                  <span class="compare-badge-alt">Tối ưu hội
+                    họp chung</span>
+                </div>
+                <div class="compare-item">
+                  <div class="card-bullet"></div>
+                  <div>
+                    Tập trung vào cuộc họp ngắn hạn, ít công
+                    cụ đánh giá &amp; theo dõi quá trình
+                    học.
+                  </div>
+                </div>
+                <div class="compare-item">
+                  <div class="card-bullet"></div>
+                  <div>
+                    Hạn chế trong việc tùy chỉnh trải nghiệm
+                    lớp học hoặc hệ thống đào tạo chuyên
+                    sâu.
+                  </div>
+                </div>
+                <div class="compare-item">
+                  <div class="card-bullet"></div>
+                  <div>
+                    Khó tích hợp sâu vào hạ tầng giáo dục,
+                    hệ thống quản lý học tập nội bộ.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MÔ HÌNH DOANH THU & CƠ HỘI KINH DOANH -->
+      <section id="co-hoi-kinh-doanh">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-title-wrap">
+              <div class="section-eyebrow">Mô hình doanh thu &amp;
+                cơ hội</div>
+              <h2 class="section-title">
+                Từ gói miễn phí đến giải pháp AI tùy chỉnh cho
+                từng tổ chức.
+              </h2>
+              <p class="section-desc">
+                Legatalk linh hoạt trong mô hình thương mại: vừa
+                phục vụ cộng đồng, vừa đáp ứng yêu cầu khắt khe
+                của tổ chức lớn với các gói cao cấp &amp; dịch
+                vụ riêng.
+              </p>
+            </div>
+            <div class="section-tag">
+              Đồng hành cùng chiến lược chuyển đổi số quốc gia
+              &amp; giáo dục 4.0.
+            </div>
+          </div>
+
+          <div class="pricing-grid">
+            <div class="price-card reveal">
+              <div class="price-name">Gói miễn phí</div>
+              <div class="price-tagline">Dành cho cá nhân &amp;
+                cộng đồng học tập nhỏ.</div>
+              <div class="price-label">Bắt đầu nhanh – không ràng
+                buộc.</div>
+              <div class="price-feature">• Họp &amp; học online
+                với số lượng người tham gia giới hạn.</div>
+              <div class="price-feature">• Một số tính năng AI cơ
+                bản.</div>
+              <div class="price-feature">• Phù hợp thử nghiệm
+                &amp; nhóm nhỏ.</div>
+            </div>
+
+            <div class="price-card reveal reveal-delay-1">
+              <div class="price-name">Gói chuyên nghiệp</div>
+              <div class="price-tagline">
+                Cho trường học, trung tâm đào tạo &amp; doanh
+                nghiệp.
+              </div>
+              <div class="price-label">Tùy biến theo quy mô &amp;
+                tính năng.</div>
+              <div class="price-feature">• Quản lý lớp, phòng học
+                &amp; lịch đào tạo tập trung.</div>
+              <div class="price-feature">
+                • AI nâng cao: báo cáo hiệu suất, theo dõi hành
+                trình học.
+              </div>
+              <div class="price-feature">
+                • Hỗ trợ triển khai &amp; đào tạo đội ngũ sử
+                dụng.
+              </div>
+            </div>
+
+            <div class="price-card reveal reveal-delay-2">
+              <div class="price-name">API &amp; Dịch vụ tùy
+                chỉnh</div>
+              <div class="price-tagline">Dành cho nền tảng &amp;
+                hệ thống lớn cần tích hợp sâu.</div>
+              <div class="price-label">Giải pháp “Legatalk
+                inside”.</div>
+              <div class="price-feature">
+                • API, SDK để tích hợp vào cổng điện tử &amp;
+                LMS hiện có.
+              </div>
+              <div class="price-feature">
+                • Tùy chỉnh giao diện theo thương hiệu của đối
+                tác.
+              </div>
+              <div class="price-feature">
+                • Phân tích dữ liệu, AI cá nhân hóa chuyên sâu.
+              </div>
+            </div>
+          </div>
+
+          <div class="card soft reveal" style="margin-top:24px;">
+            <h3 class="card-title">Cơ hội kinh doanh &amp; mở
+              rộng</h3>
+            <p class="card-sub">
+              Thị trường học trực tuyến &amp; họp từ xa toàn cầu
+              tiếp tục tăng trưởng mạnh, đặc biệt tại các
+              nước đang phát triển.
+            </p>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-phase">Giai đoạn 1</div>
+                <div class="timeline-title">Tập trung vào giáo
+                  dục &amp; doanh nghiệp tại Việt Nam</div>
+                <div class="timeline-desc">
+                  Triển khai thí điểm ở trường học, trung tâm
+                  đào tạo và một số doanh nghiệp.
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-phase">Giai đoạn 2</div>
+                <div class="timeline-title">Mở rộng sang Đông
+                  Nam Á &amp; thị trường mới nổi</div>
+                <div class="timeline-desc">
+                  Tận dụng cơ hội từ chương trình chuyển đổi
+                  số quốc gia &amp; khu vực.
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-phase">Giai đoạn 3</div>
+                <div class="timeline-title">Hệ sinh thái AI giáo
+                  dục toàn diện</div>
+                <div class="timeline-desc">
+                  Kết nối nhiều dịch vụ bổ trợ: kho học liệu,
+                  đánh giá kỹ năng, chứng chỉ số.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ & TÀI LIỆU DỰ ÁN -->
+      <section id="faq">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-title-wrap">
+              <div class="section-eyebrow">Câu hỏi thường gặp
+                &amp; tài liệu dự án</div>
+              <h2 class="section-title">Giải đáp nhanh cho nhà
+                trường, doanh nghiệp &amp; đối tác.</h2>
+              <p class="section-desc">
+                Cùng một nền tảng nhưng mỗi đối tượng sử dụng
+                theo cách khác nhau. Dưới đây là một số câu hỏi
+                thường gặp và tài liệu tham khảo của dự án.
+              </p>
+            </div>
+            <div class="section-tag">
+              Tài liệu chi tiết sẽ được cung cấp khi làm việc trực
+              tiếp với đội ngũ Legatalk.
+            </div>
+          </div>
+
+          <div class="faq-grid">
+            <div class="card reveal">
+              <h3 class="card-title">Câu hỏi thường gặp</h3>
+              <div class="faq-item">
+                <div class="faq-q">Legatalk khác gì so với các
+                  nền tảng họp miễn phí?</div>
+                <div class="faq-a">
+                  Legatalk tập trung cho giáo dục và đào tạo
+                  nội bộ, có AI hỗ trợ, công cụ lớp học và khả
+                  năng
+                  tích hợp sâu vào hệ thống hiện có.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">Dữ liệu học viên &amp; nhân
+                  viên có an toàn không?</div>
+                <div class="faq-a">
+                  Nền tảng sử dụng các lớp mã hóa, phân quyền
+                  theo vai trò và tuân thủ tiêu chuẩn bảo mật.
+                  Chi
+                  tiết có thể cấu hình theo yêu cầu từng tổ
+                  chức.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">Có thể triển khai riêng cho
+                  một trường hoặc doanh nghiệp không?</div>
+                <div class="faq-a">
+                  Có. Legatalk hỗ trợ triển khai dedicated
+                  server, tên miền &amp; thương hiệu riêng của
+                  đối tác.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">AI có thay thế giáo viên hoặc
+                  người đào tạo không?</div>
+                <div class="faq-a">
+                  AI chỉ đóng vai trò trợ lý: ghi chép, tóm
+                  tắt, gợi ý và nhắc nhở. Quyết định &amp; nội
+                  dung
+                  chuyên môn vẫn do con người giữ vai trò
+                  trung tâm.
+                </div>
+              </div>
+            </div>
+
+            <div class="card soft reveal reveal-delay-1">
+              <h3 class="card-title">Tài liệu dự án &amp; liên
+                quan</h3>
+              <ul class="doc-list">
+                <li class="doc-item">
+                  <div class="doc-info">
+                    <div class="doc-dot"></div>
+                    <div>
+                      <div>Slide giới thiệu dự án
+                        Legatalk</div>
+                      <div class="doc-label">Tổng quan ·
+                        Tầm nhìn · Mô hình kinh
+                        doanh</div>
                     </div>
+                  </div>
+                  <div class="doc-label">PDF</div>
+                </li>
+                <li class="doc-item">
+                  <div class="doc-info">
+                    <div class="doc-dot"></div>
+                    <div>
+                      <div>One-page cho nhà trường &amp;
+                        doanh nghiệp</div>
+                      <div class="doc-label">Giải pháp
+                        triển khai thực tế</div>
+                    </div>
+                  </div>
+                  <div class="doc-label">Draft</div>
+                </li>
+                <li class="doc-item">
+                  <div class="doc-info">
+                    <div class="doc-dot"></div>
+                    <div>
+                      <div>Tài liệu API &amp; SDK</div>
+                      <div class="doc-label">Tích hợp với
+                        LMS, cổng nội bộ</div>
+                    </div>
+                  </div>
+                  <div class="doc-label">Coming soon</div>
+                </li>
+              </ul>
+              <p class="cta-note" style="margin-top:10px;">
+                Liên hệ đội ngũ để nhận bộ tài liệu chi tiết,
+                demo hệ thống và tư vấn mô hình triển khai phù
+                hợp.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                    <div class="grid-2">
-                        <!-- Hướng dẫn cài đặt -->
-                        <div class="card reveal">
-                            <h3 class="card-title">Hướng dẫn cài đặt trên
-                                Android (file APK)</h3>
-                            <p class="card-sub">
-                                Làm theo các bước dưới đây để cài đặt ứng dụng
-                                Legatalk trên điện thoại Android của bạn.
-                            </p>
-                            <ul class="card-list">
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Bước 1:</strong> Mở trình duyệt
-                                        trên điện thoại (Chrome, Cốc Cốc, v.v.)
-                                        và truy cập
-                                        trang giới thiệu Legatalk này.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Bước 2:</strong> Nhấn nút
-                                        <em>“Tải APK Android”</em> bên cạnh để
-                                        tải file cài đặt
-                                        <strong>.apk</strong> về máy.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Bước 3:</strong> Khi hệ thống
-                                        hỏi quyền cài đặt từ nguồn không xác
-                                        định, chọn
-                                        <strong>Cho phép</strong> (Settings →
-                                        Security → Unknown Sources tùy phiên bản
-                                        Android).
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Bước 4:</strong> Mở file APK vừa
-                                        tải trong mục <strong>Tải xuống /
-                                            Download</strong> và
-                                        nhấn <strong>Cài đặt</strong>.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        <strong>Bước 5:</strong> Sau khi cài
-                                        đặt, mở app Legatalk, cấp quyền
-                                        <strong>Camera</strong>
-                                        &amp; <strong>Micro</strong> để tham gia
-                                        phòng họp &amp; lớp học.
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="pill-row">
-                                <div class="pill">Tối ưu cho gọi video &amp; họp
-                                    nhóm</div>
-                                <div class="pill">Hỗ trợ đăng nhập tài khoản
-                                    Legatalk</div>
-                                <div class="pill">Tự động nhận thông báo cuộc
-                                    họp mới</div>
-                            </div>
-                        </div>
+      <!-- ỨNG DỤNG DI ĐỘNG – ANDROID -->
+      <section id="ung-dung">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-title-wrap">
+              <div class="section-eyebrow">Ứng dụng di động</div>
+              <h2 class="section-title">Cài đặt Legatalk trên
+                thiết bị Android.</h2>
+              <p class="section-desc">
+                Trải nghiệm phòng họp &amp; lớp học Legatalk
+                trực tiếp trên điện thoại Android: tối ưu cho
+                camera, micro, chất lượng kết nối và thông báo
+                theo thời gian thực.
+              </p>
+            </div>
+            <div class="section-tag">APK riêng cho đối tác &amp;
+              người dùng trải nghiệm sớm.</div>
+          </div>
 
-                        <!-- Khối tải APK + QR -->
-                        <div class="card soft reveal reveal-delay-1">
-                            <h3 class="card-title">Tải APK Legatalk cho
-                                Android</h3>
-                            <p class="card-sub">
-                                Dành cho đối tác &amp; người dùng muốn trải
-                                nghiệm sớm app Legatalk trên thiết bị di động.
-                            </p>
+          <div class="grid-2">
+            <!-- Hướng dẫn cài đặt -->
+            <div class="card reveal">
+              <h3 class="card-title">Hướng dẫn cài đặt trên
+                Android (file APK)</h3>
+              <p class="card-sub">
+                Làm theo các bước dưới đây để cài đặt ứng dụng
+                Legatalk trên điện thoại Android của bạn.
+              </p>
+              <ul class="card-list">
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Bước 1:</strong> Mở trình duyệt
+                    trên điện thoại (Chrome, Cốc Cốc, v.v.)
+                    và truy cập
+                    trang giới thiệu Legatalk này.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Bước 2:</strong> Nhấn nút
+                    <em>“Tải APK Android”</em> bên cạnh để
+                    tải file cài đặt
+                    <strong>.apk</strong> về máy.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Bước 3:</strong> Khi hệ thống
+                    hỏi quyền cài đặt từ nguồn không xác
+                    định, chọn
+                    <strong>Cho phép</strong> (Settings →
+                    Security → Unknown Sources tùy phiên bản
+                    Android).
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Bước 4:</strong> Mở file APK vừa
+                    tải trong mục <strong>Tải xuống /
+                      Download</strong> và
+                    nhấn <strong>Cài đặt</strong>.
+                  </div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    <strong>Bước 5:</strong> Sau khi cài
+                    đặt, mở app Legatalk, cấp quyền
+                    <strong>Camera</strong>
+                    &amp; <strong>Micro</strong> để tham gia
+                    phòng họp &amp; lớp học.
+                  </div>
+                </li>
+              </ul>
+              <div class="pill-row">
+                <div class="pill">Tối ưu cho gọi video &amp; họp
+                  nhóm</div>
+                <div class="pill">Hỗ trợ đăng nhập tài khoản
+                  Legatalk</div>
+                <div class="pill">Tự động nhận thông báo cuộc
+                  họp mới</div>
+              </div>
+            </div>
 
-                            <!-- Nút tải APK -->
-                            <a
-                                class="btn-primary"
-                                style="display:inline-flex; margin-bottom:12px;"
-                                href="https://github.com/duclmhe140328/legatalkAPK/releases/download/v1/legatalk.apk">
-                                Tải APK Android ↧
-                            </a>
+            <!-- Khối tải APK + QR -->
+            <div class="card soft reveal reveal-delay-1">
+              <h3 class="card-title">Tải APK Legatalk cho
+                Android</h3>
+              <p class="card-sub">
+                Dành cho đối tác &amp; người dùng muốn trải
+                nghiệm sớm app Legatalk trên thiết bị di động.
+              </p>
 
-                            <p class="card-sub" style="margin-bottom:10px;">
-                                Sau khi tải xong, hãy mở file
-                                <strong>legatalk.apk</strong> và
-                                tiến hành cài đặt
-                                theo hướng dẫn.
-                            </p>
+              <!-- Nút tải APK -->
+              <a
+                class="btn-primary"
+                style="display:inline-flex; margin-bottom:12px;"
+                href="https://github.com/duclmhe140328/legatalkAPK/releases/download/v1/legatalk.apk">
+                Tải APK Android ↧
+              </a>
 
-                            <!-- QR code mô phỏng -->
-                            <div style="margin-top:8px; margin-bottom:14px;">
-                                <div
-                                    style="
+              <p class="card-sub" style="margin-bottom:10px;">
+                Sau khi tải xong, hãy mở file
+                <strong>legatalk.apk</strong> và
+                tiến hành cài đặt
+                theo hướng dẫn.
+              </p>
+
+              <!-- QR code mô phỏng -->
+              <div style="margin-top:8px; margin-bottom:14px;">
+                <div
+                  style="
       width: 130px;
       height: 130px;
       border-radius: 18px;
@@ -2338,194 +2368,196 @@
       align-items: center;
       justify-content: center;
     ">
-                                    <img
-                                        src="https://qr.scan.page/uploads/qr_codes/ocx3NT.svg?1763061714"
-                                        alt="QR tải APK"
-                                        style="
+                  <img
+                    src="https://qr.scan.page/uploads/qr_codes/ocx3NT.svg?1763061714"
+                    alt="QR tải APK"
+                    style="
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 18px;
       " />
-                                </div>
-                            </div>
-
-                            <ul class="card-list">
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>Khuyến nghị dùng Android 8.0 trở lên để
-                                        có trải nghiệm ổn định.</div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>Cấu hình tối thiểu: RAM 3GB, kết nối
-                                        Internet ổn định.</div>
-                                </li>
-                                <li>
-                                    <div class="card-bullet"></div>
-                                    <div>
-                                        Đảm bảo tải APK từ đúng tên miền
-                                        <strong>legatalk.io.vn</strong> để tránh
-                                        rủi ro bảo mật.
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
-            </section>
+              </div>
 
-            <!-- CTA / LIÊN HỆ -->
-            <section class="cta-section" id="lien-he">
-                <div class="container">
-                    <div class="cta-card reveal">
-                        <div>
-                            <div class="section-eyebrow">Kết nối cùng
-                                Legatalk</div>
-                            <h2 class="cta-title">Hãy cùng xây dựng tương lai
-                                giáo dục &amp; đào tạo số.</h2>
-                            <p class="cta-sub">
-                                Dù bạn là trường học, doanh nghiệp hay cộng đồng
-                                học tập, Legatalk luôn sẵn sàng đồng hành trong
-                                hành trình số hóa.
-                            </p>
-                            <div class="cta-highlight">
-                                Demo hệ thống đang được triển khai theo đúng lộ
-                                trình. Dự kiến hoàn tất vào tháng 12/2025.
-                            </div>
-                            <div class="cta-actions">
-                                <button
-                                    class="btn-primary"
-                                    type="button"
-                                    onclick="alert('Cảm ơn bạn đã quan tâm. Đội ngũ Legatalk sẽ sớm liên hệ lại qua thông tin bạn cung cấp!')">
-                                    Gửi yêu cầu tư vấn
-                                </button>
-                                <div class="cta-pill">
-                                    <div class="cta-dot"></div>
-                                    Email: Talklega@gmail.com
-                                </div>
-                                <div class="cta-pill">
-                                    <div class="cta-dot"></div>
-                                    <div
-                                        onclick="window.open('https://www.legatalk.io.vn', '_blank')"
-                                        style="
+              <ul class="card-list">
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>Khuyến nghị dùng Android 8.0 trở lên để
+                    có trải nghiệm ổn định.</div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>Cấu hình tối thiểu: RAM 3GB, kết nối
+                    Internet ổn định.</div>
+                </li>
+                <li>
+                  <div class="card-bullet"></div>
+                  <div>
+                    Đảm bảo tải APK từ đúng tên miền
+                    <strong>legatalk.io.vn</strong> để tránh
+                    rủi ro bảo mật.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA / LIÊN HỆ -->
+      <section class="cta-section" id="lien-he">
+        <div class="container">
+          <div class="cta-card reveal">
+            <div>
+              <div class="section-eyebrow">Kết nối cùng
+                Legatalk</div>
+              <h2 class="cta-title">Hãy cùng xây dựng tương lai
+                giáo dục &amp; đào tạo số.</h2>
+              <p class="cta-sub">
+                Dù bạn là trường học, doanh nghiệp hay cộng đồng
+                học tập, Legatalk luôn sẵn sàng đồng hành trong
+                hành trình số hóa.
+              </p>
+              <div class="cta-highlight">
+                Demo hệ thống đang được triển khai theo đúng lộ
+                trình. Dự kiến hoàn tất vào tháng 12/2025.
+              </div>
+              <div class="cta-actions">
+                <button
+                  class="btn-primary"
+                  type="button"
+                  onclick="alert('Cảm ơn bạn đã quan tâm. Đội ngũ Legatalk sẽ sớm liên hệ lại qua thông tin bạn cung cấp!')">
+                  Gửi yêu cầu tư vấn
+                </button>
+                <div class="cta-pill">
+                  <div class="cta-dot"></div>
+                  Email: Talklega@gmail.com
+                </div>
+                <div class="cta-pill">
+                  <div class="cta-dot"></div>
+                  <div
+                    onclick="window.open('https://www.legatalk.io.vn', '_blank')"
+                    style="
     cursor:pointer;
     padding:6px 0;
     color:#38bdf8;
     transition:0.25s;
   "
-                                        onmouseover="this.style.color='#a855f7'"
-                                        onmouseout="this.style.color='#38bdf8'">
-                                        Website: www.legatalk.io.vn
-                                    </div>
+                    onmouseover="this.style.color='#a855f7'"
+                    onmouseout="this.style.color='#38bdf8'">
+                    Website: www.legatalk.io.vn
+                  </div>
 
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cta-form">
-                            <div class="field-label">Đăng ký nhận demo &amp; tài
-                                liệu</div>
-                            <div class="cta-form-row">
-                                <input class="field-input" type="text"
-                                    placeholder="Tên đơn vị / Cá nhân" />
-                                <input class="field-input" type="email"
-                                    placeholder="Email liên hệ" />
-                            </div>
-                            <div class="cta-form-row">
-                                <input class="field-input" type="text"
-                                    placeholder="Số điện thoại (tuỳ chọn)" />
-                            </div>
-                            <div class="cta-form-row">
-                                <textarea
-                                    class="field-textarea"
-                                    placeholder="Nhu cầu triển khai: cho trường học, doanh nghiệp, trung tâm đào tạo hoặc cộng đồng..."></textarea>
-                            </div>
-                            <button
-                                class="btn-primary"
-                                style="width:100%; justify-content:center; margin-top:4px;"
-                                type="button"
-                                onclick="alert('Thông tin của bạn đã được ghi nhận (demo mô phỏng).')">
-                                Gửi thông tin →
-                            </button>
-                            <div class="cta-note">
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </section>
+              </div>
+            </div>
 
-            <!-- FOOTER -->
-            <footer>
-                <div class="container">
-                    <div class="footer-grid">
-                        <div>
-                            <div class="brand">
-                                <div class="brand-logo">L</div>
-                                <div class="brand-text">
-                                    <div class="brand-title">Legatalk</div>
-                                    <div class="brand-sub">Talklega
-                                        Company</div>
-                                </div>
-                            </div>
-                            <p class="footer-brand" style="margin-top:8px;">
-                                Nền tảng kết nối cho giáo dục, đào tạo nội bộ và
-                                cộng đồng học tập – với AI là trợ lý đắc lực,
-                                không phải thay thế con người.
-                            </p>
-                        </div>
+            <div class="cta-form">
+              <div class="field-label">Đăng ký nhận demo &amp; tài
+                liệu</div>
+              <div class="cta-form-row">
+                <input class="field-input" type="text"
+                  placeholder="Tên đơn vị / Cá nhân" />
+                <input class="field-input" type="email"
+                  placeholder="Email liên hệ" />
+              </div>
+              <div class="cta-form-row">
+                <input class="field-input" type="text"
+                  placeholder="Số điện thoại (tuỳ chọn)" />
+              </div>
+              <div class="cta-form-row">
+                <textarea
+                  class="field-textarea"
+                  placeholder="Nhu cầu triển khai: cho trường học, doanh nghiệp, trung tâm đào tạo hoặc cộng đồng..."></textarea>
+              </div>
+              <button
+                class="btn-primary"
+                style="width:100%; justify-content:center; margin-top:4px;"
+                type="button"
+                onclick="alert('Thông tin của bạn đã được ghi nhận (demo mô phỏng).')">
+                Gửi thông tin →
+              </button>
+              <div class="cta-note">
 
-                        <div>
-                            <div class="footer-title">Sản phẩm</div>
-                            <ul class="footer-list">
-                                <li><a href="#gioi-thieu">Legatalk – Họp &amp;
-                                        học trực tuyến</a></li>
-                                <li><a href="#tinh-nang">AI hỗ trợ giáo
-                                        dục</a></li>
-                                <li><a href="#co-hoi-kinh-doanh">API &amp; tích
-                                        hợp</a></li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <div class="footer-title">Tài liệu</div>
-                            <ul class="footer-list">
-                                <li><a href="#faq">FAQ &amp; tài liệu dự
-                                        án</a></li>
-                                <li><a href="#co-hoi-kinh-doanh">Thông tin hợp
-                                        tác</a></li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <div class="footer-title">Liên hệ</div>
-                            <ul class="footer-list">
-                                <li><a
-                                        href="mailto:Talklega@gmail.com">Talklega@gmail.com</a></li>
-                                <li>Hà Nội, Việt Nam</li>
-                                <li>
-                                    <a href="https://www.legatalk.io.vn"
-                                        target="_blank"
-                                        rel="noopener noreferrer">www.legatalk.io.vn</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="footer-bottom">
-                        <div>
-                            © <span class="highlight">Talklega Company</span> ·
-                            Nền tảng tương lai cho giáo dục &amp; đào tạo
-                            số.
-                        </div>
-                        <div>Privacy · Terms · Cookies</div>
-                    </div>
-                </div>
-            </footer>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <script>
+      <!-- FOOTER -->
+      <footer>
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="brand">
+                 <div class="brand-logo">
+    <img src="https://legatalk.io.vn/images/logo.png" alt="Legatalk logo" class="brand-logo-img" />
+  </div>
+                <div class="brand-text">
+                  <div class="brand-title">Legatalk</div>
+                  <div class="brand-sub">Talklega
+                    Company</div>
+                </div>
+              </div>
+              <p class="footer-brand" style="margin-top:8px;">
+                Nền tảng kết nối cho giáo dục, đào tạo nội bộ và
+                cộng đồng học tập – với AI là trợ lý đắc lực,
+                không phải thay thế con người.
+              </p>
+            </div>
+
+            <div>
+              <div class="footer-title">Sản phẩm</div>
+              <ul class="footer-list">
+                <li><a href="#gioi-thieu">Legatalk – Họp &amp;
+                    học trực tuyến</a></li>
+                <li><a href="#tinh-nang">AI hỗ trợ giáo
+                    dục</a></li>
+                <li><a href="#co-hoi-kinh-doanh">API &amp; tích
+                    hợp</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="footer-title">Tài liệu</div>
+              <ul class="footer-list">
+                <li><a href="#faq">FAQ &amp; tài liệu dự
+                    án</a></li>
+                <li><a href="#co-hoi-kinh-doanh">Thông tin hợp
+                    tác</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="footer-title">Liên hệ</div>
+              <ul class="footer-list">
+                <li><a
+                    href="mailto:Talklega@gmail.com">Talklega@gmail.com</a></li>
+                <li>Hà Nội, Việt Nam</li>
+                <li>
+                  <a href="https://www.legatalk.io.vn"
+                    target="_blank"
+                    rel="noopener noreferrer">www.legatalk.io.vn</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <div>
+              © <span class="highlight">Talklega Company</span> ·
+              Nền tảng tương lai cho giáo dục &amp; đào tạo
+              số.
+            </div>
+            <div>Privacy · Terms · Cookies</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
       // Hiệu ứng reveal khi scroll
       const reveals = document.querySelectorAll(".reveal");
       const observer = new IntersectionObserver(
@@ -2589,7 +2621,5 @@
 
       window.addEventListener("load", createSnow);
     </script>
-    </body>
+  </body>
 </html>
-
-
