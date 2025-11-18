@@ -2594,35 +2594,10 @@
       }
 
       // Bông tuyết bay
-      function createSnow() {
-        const snowContainer = document.createElement("div");
-        snowContainer.className = "snow-container";
-        document.body.appendChild(snowContainer);
-
-        const snowChars = ["❄", "✦", "✧", "✼"];
-
-        for (let i = 0; i < 60; i++) {
-          const flake = document.createElement("span");
-          flake.className = "snowflake";
-          flake.textContent = snowChars[Math.floor(Math.random() * snowChars.length)];
-
-          const size = 8 + Math.random() * 10;
-          const left = Math.random() * 100;
-          const duration = 10 + Math.random() * 15;
-          const delay = Math.random() * 10;
-
-          flake.style.left = left + "%";
-          flake.style.fontSize = size + "px";
-          flake.style.animationDuration = duration + "s";
-          flake.style.animationDelay = delay + "s";
-
-          snowContainer.appendChild(flake);
-        }
-      }
-
-      window.addEventListener("load", createSnow);
+   
     </script>
   </body>
 </html>
+
 
 
