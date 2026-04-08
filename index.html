@@ -58,6 +58,16 @@
       .orb-2 { width: 600px; height: 600px; background: var(--accent); bottom: -150px; right: -150px; animation: float 18s infinite alternate-reverse ease-in-out; }
       @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, 80px) scale(1.1); } }
 
+      /* ---------- ẨN WIDGET NỔI KHI MỞ IFRAME ---------- */
+      body.hide-floating-widgets .elfsight-app-678f68bc-e13f-49bf-9a81-0c8480a6e7cb,
+      body.hide-floating-widgets [class*="eapps"], /* Quét toàn bộ class của Elfsight */
+      body.hide-floating-widgets .zalo-floating {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+      }
+
       /* ---------- MÀN HÌNH CHỜ RÈM KÉO ---------- */
       #curtain-loader {
         position: fixed; inset: 0; z-index: 99999;
@@ -642,7 +652,7 @@
               </a>
             </div>
             <div class="app-qr">
-              <img src="https://qr.scan.page/uploads/qr_codes/ugdS8f.svg?v=1775636516" alt="QR Code Google Play" />
+              <img src="https://qr.scan.page/uploads/qr_codes/ocx3NT.svg?1763061714" alt="QR Code Google Play" />
             </div>
           </div>
         </div>
@@ -862,7 +872,7 @@
         link.addEventListener('click', () => { navBtn.classList.remove('open'); navLinks.classList.remove('nav-open'); });
       });
 
-      // 6. LOGIC MỞ IFRAME TOÀN MÀN HÌNH (GỘP CHUNG CHO APP VÀ TÀI LIỆU)
+      // 6. LOGIC MỞ IFRAME TOÀN MÀN HÌNH VÀ ẨN WIDGET NỔI
       const openAppBtn = document.getElementById('open-app-btn');
       const closeAppBtn = document.getElementById('close-iframe-btn');
       const overlay = document.getElementById('iframe-overlay');
@@ -873,9 +883,12 @@
         iframeTitleText.textContent = title;
         iframe.src = url; // Gán link mới
         overlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; 
         
-        // Đóng các thành phần khác nếu đang mở
+        // Ẩn thanh cuộn web, thêm class để ẩn Zalo và Elfsight
+        document.body.style.overflow = 'hidden'; 
+        document.body.classList.add('hide-floating-widgets'); 
+        
+        // Đóng menu / modal nếu đang mở
         navBtn.classList.remove('open'); 
         navLinks.classList.remove('nav-open');
         closeDocs();
@@ -887,8 +900,10 @@
 
       closeAppBtn.addEventListener('click', () => {
         overlay.classList.remove('active');
+        // Phục hồi lại trạng thái cũ
         document.body.style.overflow = ''; 
-        iframe.src = ''; // Xóa link để ngắt tài nguyên ngầm
+        document.body.classList.remove('hide-floating-widgets');
+        iframe.src = ''; // Xóa link để ngắt tài nguyên
       });
 
       // 7. LOGIC MODAL TÀI LIỆU
