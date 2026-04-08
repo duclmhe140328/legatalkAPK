@@ -2,2603 +2,878 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <title>Legatalk – Nền tảng kết nối cho Giáo dục & Họp trực tuyến</title>
+    <title>Legatalk – AI Meeting & Education Space</title>
     <link rel="icon" type="image/png" href="https://legatalk.io.vn/images/logo.png">
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-678f68bc-e13f-49bf-9a81-0c8480a6e7cb" data-elfsight-app-lazy></div>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-678f68bc-e13f-49bf-9a81-0c8480a6e7cb" data-elfsight-app-lazy></div>
+    
     <style>
       :root {
-        --bg-main: #050816;
-        --bg-card: rgba(15, 23, 42, 0.85);
-        --bg-card-soft: rgba(15, 23, 42, 0.6);
-        --primary: #38bdf8;
-        --primary-soft: rgba(56, 189, 248, 0.3);
-        --accent: #a855f7;
-        --accent-soft: rgba(168, 85, 247, 0.3);
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --border-soft: rgba(148, 163, 184, 0.3);
-        --radius-xl: 24px;
-        --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.8);
-        --blur-card: 20px;
-        --transition-fast: 0.25s ease-out;
-        --transition-med: 0.45s ease-out;
+        --bg-main: #02040f;
+        --bg-card: rgba(10, 15, 30, 0.6);
+        --bg-card-soft: rgba(20, 30, 50, 0.4);
+        --primary: #0ea5e9;
+        --primary-glow: rgba(14, 165, 233, 0.6);
+        --accent: #8b5cf6;
+        --accent-glow: rgba(139, 92, 246, 0.6);
+        --zalo: #0068ff;
+        --zalo-glow: rgba(0, 104, 255, 0.8);
+        --text: #f8fafc;
+        --muted: #94a3b8;
+        --border-soft: rgba(255, 255, 255, 0.1);
+        --radius-xl: 20px;
+        --transition-fast: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
 
       body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
-        background: radial-gradient(circle at top, #0f172a 0, #020617 40%, #000 100%);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: var(--bg-main);
         color: var(--text);
         overflow-x: hidden;
         scroll-behavior: smooth;
-      }
-
-      /* ---------- GLOBAL LAYOUT ---------- */
-
-      .page {
-        position: relative;
-        min-height: 100vh;
-        color: var(--text);
-      }
-
-      .glow-orb {
-        position: fixed;
-        border-radius: 999px;
-        filter: blur(80px);
-        opacity: 0.35;
-        mix-blend-mode: screen;
-        pointer-events: none;
-        z-index: -1;
-      }
-
-      .glow-orb.orb-1 {
-        width: 420px;
-        height: 420px;
-        background: radial-gradient(circle, var(--primary-soft), transparent 60%);
-        top: -100px;
-        left: -80px;
-        animation: floatOrb 18s infinite alternate ease-in-out;
-      }
-
-      .glow-orb.orb-2 {
-        width: 520px;
-        height: 520px;
-        background: radial-gradient(circle, var(--accent-soft), transparent 60%);
-        bottom: -200px;
-        right: -120px;
-        animation: floatOrb 22s infinite alternate ease-in-out;
-      }
-
-      .glow-orb.orb-3 {
-        width: 520px;
-        height: 520px;
-        background: radial-gradient(circle, rgba(34, 197, 94, 0.35), transparent 60%);
-        top: 40%;
-        right: 40%;
-        animation: floatOrb 26s infinite alternate ease-in-out;
-      }
-
-      @keyframes floatOrb {
-        0% {
-          transform: translate3d(0, 0, 0);
-        }
-        50% {
-          transform: translate3d(40px, -20px, 0);
-        }
-        100% {
-          transform: translate3d(-30px, 30px, 0);
-        }
-      }
-
-      .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      /* ---------- NAVBAR ---------- */
-
-      .navbar {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        backdrop-filter: blur(20px);
-        background: linear-gradient(
-          to bottom,
-          rgba(15, 23, 42, 0.92),
-          rgba(15, 23, 42, 0.6),
-          transparent
-        );
-        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-      }
-
-      .nav-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 0;
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .brand-logo {
-        width: 38px;
-        height: 38px;
-        border-radius: 15px;
-        background: radial-gradient(circle at 30% 20%, #f9fafb 0, #e5e7eb 35%, #38bdf8 80%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 800;
-        font-size: 18px;
-        color: #020617;
-        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.8);
-      }
-
-      .brand-text {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-
-      .brand-title {
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        font-size: 16px;
-      }
-
-      .brand-sub {
-        font-size: 11px;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 0.14em;
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        font-size: 14px;
-      }
-
-      .nav-link {
-        color: var(--muted);
-        text-decoration: none;
-        position: relative;
-        padding-bottom: 2px;
-        transition: color 0.2s ease-out;
-      }
-
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        height: 2px;
-        border-radius: 999px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        transition: width 0.2s ease-out;
-      }
-
-      .nav-link:hover {
-        color: var(--text);
-      }
-
-      .nav-link:hover::after {
-        width: 100%;
-      }
-
-      .nav-cta {
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.35);
-        padding: 8px 18px;
-        font-size: 13px;
-        background: radial-gradient(
-            circle at top left,
-            rgba(56, 189, 248, 0.18),
-            transparent
-          ),
-          radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.15), rgba(15, 23, 42, 0.9));
-        color: var(--text);
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        box-shadow: 0 14px 40px rgba(15, 23, 42, 0.7);
-        transition: transform 0.16s ease-out, box-shadow 0.16s ease-out,
-          border-color 0.16s ease-out, background 0.16s ease-out;
-      }
-
-      .nav-cta span {
-        font-size: 16px;
-      }
-
-      .nav-cta:hover {
-        transform: translateY(-1px) scale(1.02);
-        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
-        border-color: rgba(148, 163, 184, 0.7);
-      }
-
-      /* Nút hamburger cho mobile */
-      .nav-toggle {
-        display: none;
-        width: 34px;
-        height: 34px;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        background: rgba(15, 23, 42, 0.9);
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 4px;
-        padding: 0;
-        cursor: pointer;
-      }
-
-      .nav-toggle span {
-        width: 16px;
-        height: 2px;
-        border-radius: 999px;
-        background: #e5e7eb;
-        transition: transform 0.2s ease, opacity 0.2s ease;
-      }
-
-      .nav-toggle.open span:nth-child(1) {
-        transform: translateY(4px) rotate(45deg);
-      }
-      .nav-toggle.open span:nth-child(2) {
-        opacity: 0;
-      }
-      .nav-toggle.open span:nth-child(3) {
-        transform: translateY(-4px) rotate(-45deg);
-      }
-
-      @media (max-width: 768px) {
-        .nav-inner {
-          position: relative;
-        }
-
-        .nav-toggle {
-          display: flex;
-        }
-
-        .nav-links {
-          position: absolute;
-          top: 100%;
-          right: 0;
-          left: 0;
-          margin-top: 8px;
-          padding: 10px 16px 12px;
-          background: rgba(15, 23, 42, 0.97);
-          border-radius: 18px;
-          border: 1px solid rgba(148, 163, 184, 0.5);
-          box-shadow: 0 20px 50px rgba(15, 23, 42, 0.9);
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 10px;
-          display: none;
-        }
-
-        .nav-links.nav-open {
-          display: flex;
-        }
-
-        .nav-link,
-        .nav-cta {
-          width: 100%;
-          justify-content: flex-start;
-        }
-      }
-
-      /* ---------- HERO ---------- */
-
-      .hero {
-        padding: 70px 0 40px;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-        gap: 40px;
-        align-items: center;
-      }
-
-      @media (max-width: 900px) {
-        .hero-grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
-      }
-
-      .hero-kicker {
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.16em;
-        color: var(--primary);
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 12px;
-      }
-
-      .hero-kicker-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 999px;
-        background: var(--primary);
-        box-shadow: 0 0 18px rgba(56, 189, 248, 0.8);
-      }
-
-      .hero-title {
-        font-size: clamp(32px, 4vw, 44px);
-        line-height: 1.1;
-        letter-spacing: -0.03em;
-        margin-bottom: 14px;
-      }
-
-      .hero-title span {
-        background: linear-gradient(120deg, var(--primary), var(--accent));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        background-size: 200% 200%;
-        animation: gradientShift 8s ease-in-out infinite;
-      }
-
-      @keyframes gradientShift {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      .hero-sub {
-        font-size: 15px;
-        color: var(--muted);
-        max-width: 520px;
-        line-height: 1.6;
-        margin-bottom: 22px;
-      }
-
-      .hero-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 26px;
-      }
-
-      .badge {
-        font-size: 11px;
-        padding: 5px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 60%);
-        color: var(--muted);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .badge-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 999px;
-        background: var(--accent);
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        align-items: center;
-      }
-
-      .btn-primary {
-        border-radius: 999px;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: #020617;
-        padding: 11px 22px;
-        font-weight: 600;
-        font-size: 14px;
-        border: none;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        box-shadow: 0 14px 40px rgba(56, 189, 248, 0.35);
-        transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-1px) scale(1.02);
-        box-shadow: 0 18px 45px rgba(56, 189, 248, 0.5);
-      }
-
-      .btn-ghost {
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        background: rgba(15, 23, 42, 0.8);
-        color: var(--muted);
-        padding: 10px 18px;
-        font-size: 13px;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        transition: border-color var(--transition-fast), background var(--transition-fast),
-          color var(--transition-fast), transform var(--transition-fast);
-      }
-
-      .btn-ghost:hover {
-        border-color: rgba(148, 163, 184, 0.8);
-        background: rgba(15, 23, 42, 0.95);
-        color: var(--text);
-        transform: translateY(-1px);
-      }
-
-      .hero-meta {
-        margin-top: 14px;
-        font-size: 11px;
-        color: var(--muted);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .meta-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .meta-pill span {
-        width: 6px;
-        height: 6px;
-        border-radius: 999px;
-        background: #22c55e;
-        box-shadow: 0 0 16px rgba(34, 197, 94, 0.9);
-      }
-
-      /* HERO VISUAL */
-
-      .hero-visual-wrap {
-        position: relative;
-      }
-
-      .hero-card {
-        position: relative;
-        border-radius: var(--radius-xl);
-        padding: 18px;
-        background: radial-gradient(
-          circle at top left,
-          rgba(56, 189, 248, 0.25),
-          rgba(15, 23, 42, 0.96) 48%,
-          rgba(15, 23, 42, 0.9) 100%
-        );
-        border: 1px solid rgba(148, 163, 184, 0.35);
-        box-shadow: var(--shadow-soft);
-        overflow: hidden;
-        animation: heroFloat 16s ease-in-out infinite alternate;
-      }
-
-      @keyframes heroFloat {
-        0% {
-          transform: translate3d(0, 0, 0);
-        }
-        50% {
-          transform: translate3d(0, -6px, 0);
-        }
-        100% {
-          transform: translate3d(0, -2px, 0);
-        }
-      }
-
-      .hero-card-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 12px;
-      }
-
-      .hero-card-room {
-        font-size: 11px;
-        color: var(--muted);
-      }
-
-      .hero-card-pill {
-        font-size: 11px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .hero-card-pill-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: #22c55e;
-        box-shadow: 0 0 20px rgba(34, 197, 94, 0.9);
-      }
-
-      .hero-participants {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-        margin-bottom: 12px;
-      }
-
-      .avatar {
-        border-radius: 16px;
-        padding: 10px;
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-      }
-
-      .avatar:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.8);
-      }
-
-      .avatar-circle {
-        width: 30px;
-        height: 30px;
-        border-radius: 999px;
-        background: conic-gradient(from 140deg, var(--primary), var(--accent), #22c55e, var(--primary));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #020617;
-        font-size: 15px;
-        font-weight: 700;
-      }
-
-      .avatar-info {
-        font-size: 11px;
-      }
-
-      .avatar-name {
-        font-weight: 600;
-      }
-
-      .avatar-role {
-        color: var(--muted);
-        font-size: 10px;
-      }
-
-      .hero-timeline {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 10px;
-        color: var(--muted);
-        margin-top: 4px;
-      }
-
-      .hero-timeline-bar {
-        position: relative;
-        flex: 1;
-        height: 4px;
-        border-radius: 999px;
-        background: rgba(30, 64, 175, 0.6);
-        margin-left: 8px;
-        overflow: hidden;
-      }
-
-      .hero-timeline-progress {
-        position: absolute;
-        inset: 0;
-        width: 55%;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        animation: pulseProgress 6s infinite alternate ease-in-out;
-      }
-
-      @keyframes pulseProgress {
-        0% {
-          width: 45%;
-        }
-        50% {
-          width: 80%;
-        }
-        100% {
-          width: 60%;
-        }
-      }
-
-      .hero-floating-tag {
-        position: absolute;
-        top: -18px;
-        right: 10px;
-        font-size: 10px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        background: rgba(15, 23, 42, 0.95);
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        box-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        transform: translateY(0);
-        animation: floatTag 5.4s ease-in-out infinite alternate;
-      }
-
-      .hero-floating-tag span {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: #fbbf24;
-        box-shadow: 0 0 18px rgba(251, 191, 36, 0.9);
-      }
-
-      @keyframes floatTag {
-        0% {
-          transform: translateY(0) translateX(0);
-          opacity: 0.75;
-        }
-        50% {
-          transform: translateY(6px) translateX(-4px);
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(2px) translateX(4px);
-          opacity: 0.9;
-        }
-      }
-
-      .hero-blur {
-        position: absolute;
-        inset: -40px;
-        backdrop-filter: blur(22px);
-        opacity: 0.1;
-        pointer-events: none;
-      }
-
-      .hero-rings {
-        position: absolute;
-        inset: -50%;
-        background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.3), transparent 60%),
-          radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.3), transparent 60%);
-        opacity: 0.35;
-        mix-blend-mode: screen;
-        pointer-events: none;
-        animation: spinRings 40s linear infinite;
-      }
-
-      @keyframes spinRings {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .hero-stats {
-        margin-top: 14px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        font-size: 11px;
-      }
-
-      .stat-pill {
-        padding: 7px 10px;
-        border-radius: 999px;
-        background: rgba(15, 23, 42, 0.95);
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      /* ---------- SECTIONS ---------- */
-
-      section {
-        padding: 40px 0;
-        position: relative;
-      }
-
-      .section-header {
-        margin-bottom: 24px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-
-      .section-title-wrap {
-        max-width: 520px;
-      }
-
-      .section-eyebrow {
-        font-size: 11px;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--primary);
-        margin-bottom: 8px;
-      }
-
-      .section-title {
-        font-size: 22px;
-        letter-spacing: -0.02em;
-        margin-bottom: 4px;
-      }
-
-      .section-desc {
-        font-size: 13px;
-        color: var(--muted);
-        max-width: 520px;
-        line-height: 1.6;
-      }
-
-      .section-tag {
-        font-size: 11px;
-        color: var(--muted);
-        padding: 6px 12px;
-        border-radius: 999px;
-        border: 1px dashed rgba(148, 163, 184, 0.5);
-        background: rgba(15, 23, 42, 0.8);
-      }
-
-      .grid-2 {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 18px;
-      }
-
-      @media (max-width: 900px) {
-        .grid-2 {
-          grid-template-columns: minmax(0, 1fr);
-        }
-      }
-
-      .card {
-        position: relative;
-        border-radius: var(--radius-xl);
-        padding: 18px 18px 18px;
-        background: var(--bg-card);
-        border: 1px solid var(--border-soft);
-        box-shadow: var(--shadow-soft);
-        backdrop-filter: blur(var(--blur-card));
-        overflow: hidden;
-        transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-      }
-
-      .card.soft {
-        background: var(--bg-card-soft);
-        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.65);
-      }
-
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: -40%;
-        background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), transparent 60%),
-          radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.12), transparent 60%);
-        opacity: 0;
-        transition: opacity 0.4s ease-out;
-        pointer-events: none;
-      }
-
-      .card:hover::before {
-        opacity: 1;
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 26px 70px rgba(15, 23, 42, 0.95);
-      }
-
-      .card-title {
-        font-size: 16px;
-        margin-bottom: 8px;
-      }
-
-      .card-sub {
-        font-size: 13px;
-        color: var(--muted);
-        margin-bottom: 10px;
-        line-height: 1.6;
-      }
-
-      .card-list {
-        list-style: none;
-        font-size: 13px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .card-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-        color: var(--muted);
         line-height: 1.5;
       }
 
-      .card-bullet {
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        margin-top: 5px;
-        flex-shrink: 0;
-        box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
+      /* AI Network Canvas Background */
+      #ai-network {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        z-index: -3; pointer-events: none; opacity: 0.6;
       }
 
-      .pill-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 10px;
-        font-size: 11px;
+      /* AI Grid Overlay */
+      body::before {
+        content: ''; position: fixed; inset: 0;
+        background-image: linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px; z-index: -2; pointer-events: none;
       }
 
-      .pill {
-        border-radius: 999px;
-        padding: 6px 10px;
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        background: rgba(15, 23, 42, 0.9);
-        color: var(--muted);
+      /* Ambient Orbs */
+      .glow-orb { position: fixed; border-radius: 50%; filter: blur(150px); opacity: 0.4; pointer-events: none; z-index: -1; }
+      .orb-1 { width: 500px; height: 500px; background: var(--primary); top: -150px; left: -150px; animation: float 12s infinite alternate ease-in-out; }
+      .orb-2 { width: 600px; height: 600px; background: var(--accent); bottom: -150px; right: -150px; animation: float 18s infinite alternate-reverse ease-in-out; }
+      @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, 80px) scale(1.1); } }
+
+      /* ---------- MÀN HÌNH CHỜ RÈM KÉO ---------- */
+      #curtain-loader {
+        position: fixed; inset: 0; z-index: 99999;
+        display: flex; align-items: center; justify-content: center;
+        overflow: hidden; perspective: 1000px;
       }
-
-      /* ---------- SPECIAL LAYOUTS ---------- */
-
-      .problem-highlight {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-        gap: 18px;
+      .curtain-panel {
+        position: absolute; top: 0; width: 50%; height: 100%;
+        background-color: #02040f;
+        background-image: repeating-linear-gradient(to right, rgba(255,255,255,0.01) 0%, rgba(0,0,0,0.6) 4%, rgba(0,0,0,0.6) 8%, rgba(255,255,255,0.01) 12%);
+        background-size: 200% 100%;
+        transition: transform 2.5s cubic-bezier(0.25, 1, 0.3, 1);
+        z-index: 1; box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
       }
+      .curtain-left { left: 0; transform-origin: left center; border-right: 2px solid var(--primary-glow); }
+      .curtain-right { right: 0; transform-origin: right center; border-left: 2px solid var(--primary-glow); }
 
-      @media (max-width: 900px) {
-        .problem-highlight {
-          grid-template-columns: minmax(0, 1fr);
-        }
+      .curtain-content {
+        position: relative; z-index: 2; cursor: pointer;
+        display: flex; flex-direction: column; align-items: center;
+        transition: opacity 0.6s ease, transform 0.6s ease;
       }
-
-      .stat-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
+      .loader-logo-wrap {
+        width: 100px; height: 100px; border-radius: 24px;
+        background: #fff; overflow: hidden;
+        box-shadow: 0 0 50px var(--primary-glow);
+        transition: all 0.3s ease;
+        animation: pulseLoader 1.5s infinite alternate ease-in-out;
       }
-
-      @media (max-width: 768px) {
-        .stat-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+      .loader-logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+      .curtain-content:hover .loader-logo-wrap { transform: scale(1.15); box-shadow: 0 0 100px var(--primary); }
+      .loader-text {
+        margin-top: 24px; font-size: 14px; letter-spacing: 0.2em;
+        text-transform: uppercase; color: var(--primary); font-weight: bold;
+        animation: textGlow 1s infinite alternate;
       }
+      #curtain-loader.opened .curtain-left { transform: scaleX(0); }
+      #curtain-loader.opened .curtain-right { transform: scaleX(0); }
+      #curtain-loader.opened .curtain-content { opacity: 0; transform: scale(1.5); pointer-events: none; }
+      @keyframes pulseLoader { 0% { transform: scale(0.9); } 100% { transform: scale(1.1); } }
+      @keyframes textGlow { 0% { opacity: 0.4; } 100% { opacity: 1; text-shadow: 0 0 20px var(--primary); } }
 
-      .stat-card {
-        border-radius: 18px;
-        padding: 12px 12px;
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 64, 175, 0.8));
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        font-size: 12px;
+      /* ---------- IFRAME OVERLAY ---------- */
+      #iframe-overlay {
+        position: fixed; inset: 0; z-index: 100000;
+        background: rgba(2, 4, 15, 0.95); backdrop-filter: blur(20px);
+        display: flex; flex-direction: column;
+        opacity: 0; visibility: hidden; transform: translateY(30px);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       }
-
-      .stat-value {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 4px;
+      #iframe-overlay.active { opacity: 1; visibility: visible; transform: translateY(0); }
+      .iframe-header {
+        height: 60px; min-height: 60px; background: rgba(0,0,0,0.5);
+        border-bottom: 1px solid var(--primary-glow);
+        display: flex; align-items: center; justify-content: space-between; padding: 0 20px;
       }
-
-      .stat-label {
-        color: var(--muted);
+      .iframe-title { color: #fff; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px; }
+      .iframe-title::before { content: ''; display: block; width: 10px; height: 10px; background: #10b981; border-radius: 50%; box-shadow: 0 0 15px #10b981; animation: pulseLoader 1s infinite alternate; }
+      #close-iframe-btn {
+        background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4);
+        padding: 8px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;
       }
+      #close-iframe-btn:hover { background: #ef4444; color: #fff; box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+      #app-iframe { flex: 1; width: 100%; border: none; background: #fff; }
 
-      .timeline {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        font-size: 12px;
+      /* ---------- POPUP TÀI LIỆU DỰ ÁN ---------- */
+      #docs-modal {
+        position: fixed; inset: 0; z-index: 100001;
+        background: rgba(2, 4, 15, 0.85); backdrop-filter: blur(15px);
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; visibility: hidden; transition: 0.4s;
       }
-
-      @media (max-width: 768px) {
-        .timeline {
-          grid-template-columns: minmax(0, 1fr);
-        }
+      #docs-modal.active { opacity: 1; visibility: visible; }
+      .modal-container {
+        background: rgba(10, 15, 30, 0.9); border: 1px solid var(--primary-glow);
+        border-radius: 24px; padding: 32px; max-width: 600px; width: 90%;
+        transform: translateY(40px) scale(0.95); transition: 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px var(--primary-glow);
+        position: relative;
       }
-
-      .timeline-item {
-        padding: 12px 12px;
-        border-radius: 18px;
-        border: 1px dashed rgba(148, 163, 184, 0.5);
-        background: rgba(15, 23, 42, 0.8);
+      #docs-modal.active .modal-container { transform: translateY(0) scale(1); }
+      .modal-close {
+        position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1);
+        border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%;
+        cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: 0.3s;
       }
-
-      .timeline-phase {
-        font-size: 11px;
-        color: var(--primary);
-        text-transform: uppercase;
-        letter-spacing: 0.16em;
-        margin-bottom: 6px;
-      }
-
-      .timeline-title {
-        font-size: 13px;
-        margin-bottom: 4px;
-      }
-
-      .timeline-desc {
-        font-size: 12px;
-        color: var(--muted);
-      }
-
-      .compare-table {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-        gap: 14px;
-        font-size: 13px;
-        margin-top: 8px;
-      }
-
-      @media (max-width: 900px) {
-        .compare-table {
-          grid-template-columns: minmax(0, 1fr);
-        }
-      }
-
-      .compare-col-title {
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-
-      .compare-item {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 6px;
-        color: var(--muted);
-      }
-
-      .compare-badge {
-        font-size: 10px;
-        padding: 4px 8px;
-        border-radius: 999px;
-        background: rgba(22, 163, 74, 0.15);
-        color: #4ade80;
-        border: 1px solid rgba(22, 163, 74, 0.4);
-      }
-
-      .compare-badge-alt {
-        font-size: 10px;
-        padding: 4px 8px;
-        border-radius: 999px;
-        background: rgba(239, 68, 68, 0.15);
-        color: #fb7185;
-        border: 1px solid rgba(239, 68, 68, 0.4);
-      }
-
-      .pricing-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      @media (max-width: 900px) {
-        .pricing-grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
-      }
-
-      .price-card {
-        border-radius: 20px;
-        padding: 16px 16px;
-        background: var(--bg-card-soft);
-        border: 1px solid var(--border-soft);
-      }
-
-      .price-name {
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 4px;
-      }
-
-      .price-tagline {
-        font-size: 12px;
-        color: var(--muted);
-        margin-bottom: 8px;
-      }
-
-      .price-label {
-        font-size: 11px;
-        color: #22c55e;
-        margin-bottom: 8px;
-      }
-
-      .price-feature {
-        font-size: 12px;
-        color: var(--muted);
-        display: flex;
-        gap: 6px;
-        margin-bottom: 4px;
-      }
-
-      /* ---------- FAQ / TÀI LIỆU ---------- */
-
-      .faq-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
-        gap: 16px;
-      }
-
-      @media (max-width: 900px) {
-        .faq-grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
-      }
-
-      .faq-item {
-        padding: 10px 0;
-        border-bottom: 1px dashed rgba(148, 163, 184, 0.4);
-      }
-
-      .faq-q {
-        font-size: 13px;
-        font-weight: 500;
-        margin-bottom: 4px;
-      }
-
-      .faq-a {
-        font-size: 12px;
-        color: var(--muted);
-      }
-
-      .doc-list {
-        list-style: none;
-        font-size: 12px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
+      .modal-close:hover { background: #ef4444; color: #fff; }
+      .modal-title { font-size: 24px; font-weight: bold; margin-bottom: 24px; color: #fff; border-bottom: 1px solid var(--border-soft); padding-bottom: 12px;}
       .doc-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 8px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        background: rgba(15, 23, 42, 0.9);
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 16px; border: 1px solid var(--border-soft); border-radius: 16px;
+        margin-bottom: 12px; background: rgba(255,255,255,0.02); transition: 0.3s;
       }
-
-      .doc-info {
-        display: flex;
-        align-items: center;
-        gap: 8px;
+      .doc-item:hover { border-color: var(--primary); background: rgba(14, 165, 233, 0.1); transform: translateX(5px); }
+      .doc-icon { font-size: 30px; margin-right: 16px; }
+      .doc-info { flex: 1; }
+      .doc-title { font-weight: bold; color: #fff; font-size: 15px; margin-bottom: 4px;}
+      .doc-desc { font-size: 12px; color: var(--muted); }
+      .doc-btn {
+        background: var(--primary); color: #000; padding: 8px 16px; border-radius: 8px;
+        text-decoration: none; font-size: 13px; font-weight: bold; transition: 0.3s; text-align: center;
       }
+      .doc-btn:hover { box-shadow: 0 0 15px var(--primary-glow); transform: scale(1.05); }
 
-      .doc-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: var(--accent);
+      /* ---------- GLOBAL & NAVBAR ---------- */
+      .page { position: relative; min-height: 100vh; }
+      .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+      .navbar {
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(2, 4, 15, 0.8); backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        box-shadow: 0 4px 30px rgba(0,0,0,0.5);
       }
-
-      .doc-label {
-        font-size: 11px;
-        color: var(--muted);
+      .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+      .brand { display: flex; align-items: center; gap: 12px; }
+      .brand-logo { width: 40px; height: 40px; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 0 15px var(--primary-glow); }
+      .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
+      .brand-title { font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: #fff; }
+      .brand-sub { font-size: 10px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.2em; font-weight: bold;}
+      
+      .nav-links { display: flex; align-items: center; gap: 28px; }
+      .nav-link { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+      .nav-link:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+      
+      .nav-cta {
+        border-radius: 8px; border: 1px solid var(--primary); padding: 10px 20px;
+        font-size: 14px; font-weight: bold; background: rgba(14, 165, 233, 0.1); color: var(--primary);
+        cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden;
       }
-
-      /* ---------- CTA & FOOTER ---------- */
-
-      .cta-section {
-        padding: 40px 0 32px;
+      .nav-cta::before {
+        content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: 0.5s;
       }
+      .nav-cta:hover::before { left: 100%; }
+      .nav-cta:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary-glow); }
 
-      .cta-card {
-        border-radius: 26px;
-        padding: 24px 24px 20px;
-        background: radial-gradient(
-          circle at top left,
-          rgba(56, 189, 248, 0.2),
-          rgba(15, 23, 42, 0.96) 45%,
-          rgba(15, 23, 42, 0.9) 100%
-        );
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        box-shadow: 0 26px 70px rgba(15, 23, 42, 0.9);
-        display: grid;
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-        gap: 18px;
-        align-items: center;
-      }
-
+      /* Mobile Menu */
+      .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 20px; position: relative; z-index: 60; }
+      .nav-toggle span { position: absolute; width: 100%; height: 2px; background: #fff; transition: 0.3s; border-radius: 2px;}
+      .nav-toggle span:nth-child(1) { top: 0; } .nav-toggle span:nth-child(2) { top: 9px; } .nav-toggle span:nth-child(3) { top: 18px; }
       @media (max-width: 900px) {
-        .cta-card {
-          grid-template-columns: minmax(0, 1fr);
+        .nav-toggle { display: block; }
+        .nav-links {
+          position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+          background: rgba(2, 4, 15, 0.98); backdrop-filter: blur(30px); border-left: 1px solid var(--primary-glow);
+          flex-direction: column; align-items: flex-start; padding: 100px 30px; transition: right 0.4s ease;
         }
+        .nav-links.nav-open { right: 0; box-shadow: -10px 0 50px rgba(0,0,0,0.8); }
       }
 
-      .cta-title {
-        font-size: 22px;
-        letter-spacing: -0.02em;
-        margin-bottom: 4px;
-      }
+      /* ---------- HERO ---------- */
+      .hero { padding: 100px 0 80px; }
+      .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
+      @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; text-align: center; } .hero-actions { justify-content: center; } }
 
-      .cta-sub {
-        font-size: 13px;
-        color: var(--muted);
-        margin-bottom: 14px;
-        max-width: 480px;
+      .hero-kicker {
+        font-size: 12px; text-transform: uppercase; letter-spacing: 0.2em; color: #fff;
+        display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;
+        padding: 6px 16px; border-radius: 999px; background: rgba(14, 165, 233, 0.15); border: 1px solid var(--primary-glow);
+        box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
       }
+      .hero-kicker::before { content: ''; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulseLoader 1s infinite alternate; }
+      
+      .hero-title { font-size: clamp(36px, 5vw, 56px); line-height: 1.15; margin-bottom: 20px; font-weight: 800; }
+      .typewriter-text {
+        background: linear-gradient(to right, var(--primary), var(--accent), #fff);
+        -webkit-background-clip: text; color: transparent;
+        border-right: 4px solid var(--primary);
+        animation: blinkCursor 0.8s step-end infinite;
+        white-space: nowrap; display: inline-block;
+      }
+      @keyframes blinkCursor { 50% { border-color: transparent; } }
 
-      .cta-highlight {
-        font-size: 12px;
-        color: #bbf7d0;
-        margin-bottom: 10px;
+      .hero-sub { font-size: 16px; color: var(--muted); margin-bottom: 32px; max-width: 95%; line-height: 1.6;}
+      
+      .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+      .btn-primary {
+        border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; 
+        padding: 14px 28px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; transition: 0.3s; text-decoration: none;
       }
+      .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 30px var(--accent-glow); }
+      
+      .btn-zalo {
+        border-radius: 12px; background: rgba(0, 104, 255, 0.1); border: 1px solid var(--zalo);
+        color: #fff; padding: 14px 28px; font-weight: bold; font-size: 15px; cursor: pointer; 
+        transition: 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        position: relative; overflow: hidden;
+      }
+      .btn-zalo::after {
+        content: ''; position: absolute; top: 0; left: -100%; width: 30%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+        animation: scanLight 3s infinite linear;
+      }
+      @keyframes scanLight { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
+      .btn-zalo:hover { background: var(--zalo); box-shadow: 0 0 30px var(--zalo-glow); transform: translateY(-3px); }
 
-      .cta-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+      /* AI Card Mockup */
+      .hero-card {
+        border-radius: 24px; padding: 24px; background: rgba(10, 15, 30, 0.7);
+        border: 1px solid rgba(14, 165, 233, 0.3); box-shadow: var(--shadow-glow); 
+        backdrop-filter: blur(20px); position: relative;
+        transform: perspective(1000px) rotateY(-5deg); transition: 0.5s;
       }
+      .hero-card:hover { transform: perspective(1000px) rotateY(0deg) translateY(-10px); box-shadow: 0 20px 50px rgba(14, 165, 233, 0.3); }
+      
+      .mock-header { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-soft); padding-bottom: 16px; margin-bottom: 20px; font-size: 13px; color: var(--muted); }
+      .mock-status { color: #10b981; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+      .mock-status::before { content: ''; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981; animation: pulseLoader 1s infinite; }
+      .mock-body { display: flex; gap: 16px; align-items: center; background: rgba(255,255,255,0.03); padding: 16px; border-radius: 16px; border: 1px solid var(--border-soft); }
+      .mock-ai-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; color: #fff; flex-shrink: 0;}
+      .mock-text { font-size: 14px; color: #e2e8f0; line-height: 1.4;}
 
-      .cta-pill {
-        font-size: 11px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        background: rgba(15, 23, 42, 0.9);
-        color: var(--muted);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
+      /* ---------- SECTIONS ---------- */
+      section { padding: 80px 0; }
+      .section-header { text-align: center; margin-bottom: 50px; }
+      .section-eyebrow { font-size: 14px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px; font-weight: bold; text-shadow: 0 0 10px var(--primary-glow); }
+      .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; }
 
-      .cta-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: #22c55e;
-      }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      @media (max-width: 768px) { .grid-3 { grid-template-columns: 1fr; } }
 
-      .cta-form {
-        border-radius: 20px;
-        padding: 16px 16px;
-        background: rgba(15, 23, 42, 0.95);
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        font-size: 12px;
+      /* AI Animated Border Cards */
+      .card {
+        background: var(--bg-card); border-radius: 20px; padding: 32px; 
+        backdrop-filter: blur(var(--blur-card)); position: relative;
       }
+      .card::before {
+        content: ''; position: absolute; inset: -2px; border-radius: 22px;
+        background: linear-gradient(45deg, transparent 40%, var(--primary) 50%, transparent 60%);
+        background-size: 300% 300%; z-index: -1;
+        animation: borderGlow 4s linear infinite; opacity: 0.5; transition: 0.3s;
+      }
+      @keyframes borderGlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+      .card:hover::before { opacity: 1; background: linear-gradient(45deg, transparent 20%, var(--accent) 50%, transparent 80%); background-size: 200% 200%; }
+      .card:hover { transform: translateY(-5px); }
 
-      .cta-form-row {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        gap: 10px;
-        margin-bottom: 10px;
-      }
+      .card-icon { font-size: 32px; margin-bottom: 16px; background: rgba(255,255,255,0.05); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1px solid var(--border-soft); }
+      .card-title { font-size: 18px; font-weight: bold; margin-bottom: 12px; color: #fff; }
+      .card-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
-      .field-label {
-        font-size: 11px;
-        color: var(--muted);
-        margin-bottom: 4px;
+      /* Zalo Banner */
+      .zalo-banner {
+        background: linear-gradient(135deg, rgba(0, 104, 255, 0.1), rgba(10, 15, 30, 0.8));
+        border: 1px solid var(--zalo); border-radius: 24px; padding: 40px;
+        display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 30px;
+        box-shadow: 0 0 40px rgba(0, 104, 255, 0.2); position: relative; overflow: hidden;
       }
+      .zalo-banner::after {
+        content: ''; position: absolute; width: 300px; height: 300px; background: var(--zalo);
+        filter: blur(100px); opacity: 0.2; top: -100px; right: -100px; border-radius: 50%; pointer-events: none;
+      }
+      .zalo-content h3 { font-size: 28px; color: #fff; margin-bottom: 12px; }
+      .zalo-content p { color: var(--muted); font-size: 15px; max-width: 500px; margin-bottom: 20px;}
+      .btn-zalo-large {
+        background: var(--zalo); color: #fff; padding: 16px 32px; border-radius: 12px; font-size: 16px; font-weight: bold;
+        text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;
+        box-shadow: 0 10px 30px var(--zalo-glow);
+      }
+      .btn-zalo-large:hover { transform: scale(1.05); background: #0055d4; }
 
-      .field-input,
-      .field-textarea {
-        width: 100%;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        padding: 8px 12px;
-        background: rgba(15, 23, 42, 0.9);
-        color: var(--text);
-        font-size: 12px;
-        outline: none;
-        transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+      /* App Download */
+      .app-box { display: flex; align-items: center; justify-content: space-between; background: var(--bg-card); padding: 40px; border-radius: 24px; border: 1px solid var(--border-soft); flex-wrap: wrap; gap:30px;}
+      
+      /* Google Maps */
+      .map-wrapper {
+        border-radius: 24px; overflow: hidden; position: relative;
+        border: 1px solid var(--border-hover); box-shadow: var(--shadow-glow);
+        height: 400px; width: 100%;
       }
+      .map-wrapper iframe {
+        width: 100%; height: 100%; border: none;
+        filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(120%);
+        transition: 0.5s;
+      }
+      .map-wrapper:hover iframe { filter: invert(90%) hue-rotate(180deg) brightness(100%) contrast(130%); }
 
-      .field-textarea {
-        border-radius: 14px;
-        min-height: 60px;
-        resize: vertical;
+      /* ---------- BEAUTIFUL FOOTER ---------- */
+      .tech-footer {
+        position: relative;
+        background: linear-gradient(180deg, rgba(2,4,15,0) 0%, rgba(14, 165, 233, 0.05) 100%);
+        border-top: 1px solid var(--border-soft);
+        padding: 80px 0 20px; overflow: hidden;
       }
+      .footer-glow-line {
+        position: absolute; top: 0; left: 0; width: 100%; height: 1px;
+        background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        box-shadow: 0 0 20px var(--primary-glow);
+      }
+      .footer-bg-logo {
+        position: absolute; bottom: -50px; right: -50px;
+        width: 300px; opacity: 0.03; pointer-events: none; filter: blur(2px);
+      }
+      
+      .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; position: relative; z-index: 2;}
+      @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+      
+      .footer-brand .brand-logo { margin-bottom: 16px; }
+      .footer-desc { color: var(--muted); font-size: 14px; max-width: 350px; line-height: 1.6; margin-bottom: 20px; }
+      
+      .footer-title { color: #fff; font-weight: bold; font-size: 18px; margin-bottom: 24px; letter-spacing: 1px; }
+      .footer-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+      .footer-list a { color: var(--muted); text-decoration: none; font-size: 14px; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;}
+      .footer-list a::before { content: '›'; color: var(--primary); font-weight: bold; font-size: 18px; transition: 0.3s; transform: translateX(0); }
+      .footer-list a:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+      .footer-list a:hover::before { transform: translateX(5px); }
 
-      .field-input:focus,
-      .field-textarea:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.5);
-      }
-
-      .cta-note {
-        font-size: 11px;
-        color: var(--muted);
-        margin-top: 6px;
-      }
-
-      footer {
-        padding: 20px 0 26px;
-        border-top: 1px solid rgba(30, 64, 175, 0.7);
-        background: radial-gradient(
-          circle at top,
-          rgba(15, 23, 42, 0.98),
-          rgba(15, 23, 42, 0.95) 40%,
-          rgba(2, 6, 23, 1) 100%
-        );
-      }
-
-      .footer-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 0.6fr));
-        gap: 16px;
-        font-size: 12px;
-      }
-
-      @media (max-width: 900px) {
-        .footer-grid {
-          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        }
-      }
-
-      @media (max-width: 640px) {
-        .footer-grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
-      }
-
-      .footer-brand {
-        font-size: 12px;
-        color: var(--muted);
-        max-width: 340px;
-      }
-
-      .footer-title {
-        font-size: 12px;
-        font-weight: 600;
-        margin-bottom: 6px;
-      }
-
-      .footer-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        color: var(--muted);
-      }
-
-      .footer-list a {
-        color: var(--muted);
-        text-decoration: none;
-        font-size: 12px;
-        transition: color 0.15s ease-out;
-      }
-
-      .footer-list a:hover {
-        color: var(--primary);
-      }
+      .footer-contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; color: var(--muted); font-size: 14px; }
+      .footer-contact-icon { color: var(--primary); font-size: 18px; margin-top: 2px;}
 
       .footer-bottom {
-        margin-top: 16px;
-        font-size: 11px;
-        color: var(--muted);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: space-between;
-        align-items: center;
+        border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; 
+        display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+        font-size: 13px; color: var(--muted); position: relative; z-index: 2;
       }
 
-      .footer-bottom span.highlight {
-        color: var(--primary);
+      /* ---------- FLOATING ZALO WIDGET ---------- */
+      .zalo-floating {
+        position: fixed; bottom: 30px; left: 30px; 
+        z-index: 9999; width: 60px; height: 60px; background: var(--zalo); border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 0 20px var(--zalo-glow); cursor: pointer; transition: 0.3s;
+        animation: floatPulse 2s infinite; text-decoration: none;
+      }
+      .zalo-floating:hover { transform: scale(1.1) translateY(-5px); }
+      .zalo-floating svg { width: 35px; height: 35px; fill: #fff; }
+      @keyframes floatPulse {
+        0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7); }
+        70% { box-shadow: 0 0 0 20px rgba(0, 104, 255, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); }
       }
 
-      /* ---------- ANIMATIONS / REVEAL ---------- */
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(20px) scale(0.99);
-        transition: opacity var(--transition-med), transform var(--transition-med);
-      }
-
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .reveal-delay-1 {
-        transition-delay: 0.08s;
-      }
-      .reveal-delay-2 {
-        transition-delay: 0.16s;
-      }
-      .reveal-delay-3 {
-        transition-delay: 0.24s;
-      }
-
-      /* ---------- BÔNG TUYẾT ---------- */
-
-      .snow-container {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        overflow: hidden;
-        z-index: 5;
-      }
-
-      .snowflake {
-        position: absolute;
-        top: -10vh;
-        color: rgba(248, 250, 252, 0.9);
-        text-shadow: 0 0 8px rgba(148, 163, 184, 0.9);
-        user-select: none;
-        opacity: 0;
-        animation-name: snow-fall;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-      }
-
-      @keyframes snow-fall {
-        0% {
-          transform: translate3d(0, -10vh, 0);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        100% {
-          transform: translate3d(-40px, 110vh, 0);
-          opacity: 0;
-        }
-      }
-      .brand-logo {
-  width: 38px;
-  height: 38px;
-  border-radius: 15px;
-  background: radial-gradient(circle at 30% 20%, #f9fafb 0, #e5e7eb 35%, #38bdf8 80%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 18px;
-  color: #020617;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.8);
-  overflow: hidden;           /* để logo không tràn khỏi khung */
-}
-
-.brand-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* nếu logo hình vuông / tròn */
-  /* nếu logo ngang, dùng:
-     object-fit: contain;
-     padding: 4px;
-  */
-}
-
+      /* Animations */
+      .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.25, 1, 0.3, 1); }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+      .delay-1 { transition-delay: 0.15s; } .delay-2 { transition-delay: 0.3s; }
     </style>
   </head>
   <body>
+
+    <canvas id="ai-network"></canvas>
+
+    <div id="curtain-loader">
+      <div class="curtain-panel curtain-left"></div>
+      <div class="curtain-panel curtain-right"></div>
+      
+      <div class="curtain-content" id="curtain-trigger" title="Nhấn để khởi động không gian AI">
+        <div class="loader-logo-wrap">
+          <img src="https://legatalk.io.vn/images/logo.png" alt="Legatalk Logo">
+        </div>
+        <div class="loader-text">BẤM ĐỂ KHỞI ĐỘNG HỆ THỐNG</div>
+      </div>
+    </div>
+
+    <div id="docs-modal">
+      <div class="modal-container">
+        <button class="modal-close" id="close-docs-btn">✖</button>
+        <h3 class="modal-title">Tài liệu Dự án & SDK</h3>
+        
+        <div class="doc-item">
+          <div style="display:flex; align-items:center;">
+            <div class="doc-icon">📑</div>
+            <div class="doc-info">
+              <div class="doc-title">Pitch Deck Legatalk (2026)</div>
+              <div class="doc-desc">Tổng quan dự án, tầm nhìn và mô hình kinh doanh.</div>
+            </div>
+          </div>
+          <a href="#" class="doc-btn" id="open-pitch-deck-btn">Xem Slide</a>
+        </div>
+
+        <div class="doc-item">
+          <div style="display:flex; align-items:center;">
+            <div class="doc-icon">⚙️</div>
+            <div class="doc-info">
+              <div class="doc-title">API & SDK Documentation</div>
+              <div class="doc-desc">Tài liệu kỹ thuật nhúng hệ thống Legatalk Core vào LMS/ERP.</div>
+            </div>
+          </div>
+          <a href="#" class="doc-btn" onclick="alert('Chuyển hướng tới Cổng Developer...')">Xem Docs</a>
+        </div>
+
+        <div class="doc-item">
+          <div style="display:flex; align-items:center;">
+            <div class="doc-icon">📖</div>
+            <div class="doc-info">
+              <div class="doc-title">Hướng dẫn sử dụng Web App</div>
+              <div class="doc-desc">Dành cho Giáo viên, Host và Quản trị viên (Admin).</div>
+            </div>
+          </div>
+          <a href="#" class="doc-btn" onclick="alert('Đang mở trang Hướng dẫn...')">Chi tiết</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="iframe-overlay">
+      <div class="iframe-header">
+        <div class="iframe-title"><span id="iframe-title-text">Legatalk AI Workspace</span></div>
+        <button id="close-iframe-btn">✖ Đóng</button>
+      </div>
+      <iframe id="app-iframe" allow="camera; microphone; display-capture; fullscreen"></iframe>
+    </div>
+
+    <a href="https://zalo.me/YOUR_ZALO_LINK" target="_blank" class="zalo-floating" title="Chat Zalo ngay">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.43 10.92c-.11-.2-.23-.39-.35-.58A10.1 10.1 0 0012 3.14a10.1 10.1 0 00-9.08 7.2 10.05 10.05 0 001.6 8.35c.1.13.21.26.32.4l-.87 2.76a1.18 1.18 0 001.46 1.48l2.94-.84a10.08 10.08 0 003.63.66c5.58 0 10.1-4.52 10.1-10.1a10.05 10.05 0 00-.67-3.61v-.02l-.01-.02-.01-.02v-.02zM12 21.03a8.1 8.1 0 01-3.23-.67l-.23-.1-.24.07-2.3.66.68-2.15.11-.33-.2-.27A8.1 8.1 0 013.9 12a8.1 8.1 0 018.1-8.1 8.1 8.1 0 018.1 8.1 8.1 8.1 0 01-8.1 8.1v.03z"/><path d="M10.87 15.65h-1.5a.65.65 0 010-1.3h1.5a.65.65 0 010 1.3zM15.13 15.65h-1.5a.65.65 0 010-1.3h1.5a.65.65 0 010 1.3zM10.87 11.74h-1.5a.65.65 0 010-1.3h1.5a.65.65 0 010 1.3zM15.13 11.74h-1.5a.65.65 0 010-1.3h1.5a.65.65 0 010 1.3z"/></svg>
+    </a>
+
     <div class="page">
-      <!-- glowing background -->
       <div class="glow-orb orb-1"></div>
       <div class="glow-orb orb-2"></div>
-      <div class="glow-orb orb-3"></div>
 
-      <!-- NAVBAR -->
       <header class="navbar">
         <div class="container nav-inner">
           <div class="brand">
-            <div class="brand-logo">
-              <img src="https://legatalk.io.vn/images/logo.png" alt="Legatalk logo"
-                class="brand-logo-img" />
-            </div>
-            <div class="brand-text">
+            <div class="brand-logo"><img src="https://legatalk.io.vn/images/logo.png" alt="Legatalk logo" /></div>
+            <div>
               <div class="brand-title">Legatalk</div>
-              <div class="brand-sub">AI · EDU · MEETING</div>
+              <div class="brand-sub">Neural Space</div>
             </div>
           </div>
 
-          <button class="nav-toggle" aria-label="Mở menu">
-            <span></span>
-            <span></span>
-            <span></span>
+          <button class="nav-toggle" id="mobile-menu-btn">
+            <span></span><span></span><span></span>
           </button>
 
-          <nav class="nav-links">
-            <a href="#gioi-thieu" class="nav-link">Giới thiệu</a>
-            <a href="#van-de" class="nav-link">Vấn đề</a>
-            <a href="#co-hoi" class="nav-link">Cơ hội</a>
-            <a href="#tam-nhin" class="nav-link">Tầm nhìn &amp; Sứ
-              mệnh</a>
-            <a href="#tinh-nang" class="nav-link">Tính năng</a>
-            <a href="#ung-dung" class="nav-link">Tải app</a>
-            <a href="#co-hoi-kinh-doanh" class="nav-link">Kinh
-              doanh</a>
-              <a href="https://legatalk.io.vn">
-                 <button
-              class="nav-cta"
-              type="button"
-              onclick="document.getElementById('lien-he').scrollIntoView({behavior:'smooth'})">
-              Vào Website→
-            </button>
-              </a>
-           
+          <nav class="nav-links" id="nav-links">
+            <a href="#tinh-nang" class="nav-link">Lõi AI</a>
+            <a href="#roadmap" class="nav-link">Roadmap 2026</a>
+            <a href="#" class="nav-link" id="nav-docs-btn">Tài liệu</a>
+            <a href="#ung-dung" class="nav-link">Mobile App</a>
+            <button class="nav-cta" id="open-app-btn">Truy cập Website →</button>
           </nav>
         </div>
       </header>
 
-      <!-- HERO -->
-      <section class="hero" id="gioi-thieu">
+      <section class="hero">
         <div class="container hero-grid">
           <div class="reveal">
-            <div class="hero-kicker">
-              <div class="hero-kicker-dot"></div>
-              Nền tảng kết nối cho giáo dục &amp; họp trực tuyến
-            </div>
+            <div class="hero-kicker">Next-Gen Education & Meeting</div>
             <h1 class="hero-title">
-              Định nghĩa lại <span>học tập &amp; làm việc từ
-                xa</span> với AI.
+              Kiến tạo Không gian <br>
+              <span class="typewriter-text" id="typewriter"></span>
             </h1>
-            <p class="hero-sub">
-              Legatalk là nền tảng số toàn diện, kết hợp họp trực
-              tuyến thông minh, công cụ đào tạo từ xa và
-              trợ lý AI, giúp tổ chức xây dựng lớp học &amp; phòng
-              họp online sống động như thực tế.
-            </p>
-            <div class="hero-badges">
-              <div class="badge">
-                <div class="badge-dot"></div>
-                Dành cho trường học, doanh nghiệp, cộng đồng học
-                tập
-              </div>
-              <div class="badge">
-                <div class="badge-dot"></div>
-                Đa nền tảng: Web · Desktop · Mobile
-              </div>
-              <div class="badge">
-                <div class="badge-dot"></div>
-                Chú trọng bảo mật &amp; quyền riêng tư
-              </div>
-            </div>
+            <p class="hero-sub">Legatalk sử dụng Trí tuệ Nhân tạo (AI) để phân tích hành vi, tóm tắt tự động và bảo mật tuyệt đối dữ liệu. Biến mọi cuộc họp và lớp học trở nên liền mạch hơn bao giờ hết.</p>
             <div class="hero-actions">
-              <button
-                class="btn-primary"
-                onclick="alert('Demo đang được triển khai theo đúng lộ trình. Dự kiến hoàn tất vào tháng 12/2025.')">
-                Đăng ký demo ngay <span>↗</span>
-              </button>
-              <button
-                class="btn-ghost"
-                onclick="document.getElementById('tinh-nang').scrollIntoView({behavior:'smooth'})">
-                Xem tính năng chi tiết
-              </button>
-            </div>
-            <div class="hero-meta">
-              <div class="meta-pill">
-                <span></span> Hạ tầng sẵn sàng mở rộng toàn cầu
-              </div>
-              <div class="meta-pill">
-                <span></span> Tùy chỉnh thương hiệu cho từng đơn
-                vị
-              </div>
+              <button class="btn-primary" onclick="document.getElementById('open-app-btn').click()">Trải nghiệm Web App</button>
+              <a href="https://zalo.me/YOUR_ZALO_LINK" target="_blank" class="btn-zalo">💬 Chat Zalo CSKH</a>
             </div>
           </div>
 
-          <div class="hero-visual-wrap reveal reveal-delay-2">
-            <div class="hero-card">
-              <div class="hero-blur"></div>
-              <div class="hero-rings"></div>
-              <div class="hero-card-header">
-                <div class="hero-card-room">
-                  <strong>Phòng họp:
-                    EDU–Global-01</strong><br />
-                  Đang trực tuyến · 124 người tham gia
-                </div>
-                <div class="hero-card-pill">
-                  <div class="hero-card-pill-dot"></div>
-                  AI đang ghi chép &amp; tóm tắt
-                </div>
-              </div>
-              <div class="hero-participants">
-                <div class="avatar">
-                  <div class="avatar-circle">GV</div>
-                  <div class="avatar-info">
-                    <div class="avatar-name">Giảng viên
-                      chính</div>
-                    <div class="avatar-role">Điều phối buổi
-                      học</div>
-                  </div>
-                </div>
-                <div class="avatar">
-                  <div class="avatar-circle">AI</div>
-                  <div class="avatar-info">
-                    <div class="avatar-name">Lega AI</div>
-                    <div class="avatar-role">Tự động ghi
-                      biên bản &amp; dịch</div>
-                  </div>
-                </div>
-                <div class="avatar">
-                  <div class="avatar-circle">HR</div>
-                  <div class="avatar-info">
-                    <div class="avatar-name">Phòng đào
-                      tạo</div>
-                    <div class="avatar-role">Theo dõi tiến
-                      độ nhân sự</div>
-                  </div>
-                </div>
-                <div class="avatar">
-                  <div class="avatar-circle">ST</div>
-                  <div class="avatar-info">
-                    <div class="avatar-name">Học viên</div>
-                    <div class="avatar-role">Học tập từ mọi
-                      nơi</div>
-                  </div>
-                </div>
-              </div>
-              <div class="hero-timeline">
-                <div>Buổi học: 02/10 · Lộ trình Onboarding</div>
-                <div class="hero-timeline-bar">
-                  <div class="hero-timeline-progress"></div>
-                </div>
-              </div>
-
-              <div class="hero-stats">
-                <div class="stat-pill">⏱ 1.5 tỷ+ học sinh từng
-                  phải học từ xa</div>
-                <div class="stat-pill">
-                  📊 Đo lường tương tác &amp; kết quả học tập
-                  theo thời gian thực
-                </div>
-                <div class="stat-pill">🔐 Mã hóa &amp; phân
-                  quyền cho từng vai trò</div>
-              </div>
-
-              <div class="hero-floating-tag">
-                <span></span> AI đã tóm tắt 3 ý chính cho đội
-                ngũ quản lý
-              </div>
+          <div class="hero-card reveal delay-1">
+            <div class="mock-header">
+              <div>Node: EDU-Global-VN</div>
+              <div class="mock-status">Secured (E2E)</div>
+            </div>
+            <div class="mock-body" style="margin-bottom: 12px;">
+              <div class="mock-ai-icon">AI</div>
+              <div class="mock-text"><strong>LegaBot Processing:</strong> Đang phân tích mức độ tương tác của 120 học viên theo thời gian thực...</div>
+            </div>
+            <div class="mock-body">
+              <div class="mock-ai-icon" style="background:#000; border: 1px solid var(--primary); color:var(--primary);">EN</div>
+              <div class="mock-text">Module Dịch thuật Đa ngôn ngữ (Live Subtitle) đã được kích hoạt.</div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- VẤN ĐỀ & CƠ HỘI -->
-      <section id="van-de">
-        <div class="container">
-          <div class="section-header reveal">
-            <div class="section-title-wrap">
-              <div class="section-eyebrow">Vấn đề hiện tại trên
-                thị trường</div>
-              <h2 class="section-title">Công cụ hiện có chưa sinh
-                ra cho giáo dục &amp; đào tạo nội bộ.</h2>
-              <p class="section-desc">
-                Phần lớn nền tảng họp trực tuyến tập trung cho
-                hội họp doanh nghiệp chung chung, thiếu “linh
-                hồn lớp học” và những công cụ đo lường – giám
-                sát – trò chơi hóa nội dung.
-              </p>
-            </div>
-            <div class="section-tag">
-              Legatalk được xây dựng từ bài toán giáo dục &amp;
-              đào tạo, không phải ngược lại.
-            </div>
-          </div>
-
-          <div class="problem-highlight">
-            <div class="card reveal reveal-delay-1">
-              <h3 class="card-title">Những hạn chế lớn hiện
-                nay</h3>
-              <p class="card-sub">
-                Dù số hóa diễn ra mạnh mẽ, các tổ chức vẫn gặp
-                khó khi chuyển đổi lên môi trường online.
-              </p>
-              <ul class="card-list">
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Không tối ưu cho lớp
-                      học:</strong> thiếu bảng trắng, bài
-                    kiểm tra nhanh, quản lý
-                    nội dung học liệu theo lộ trình.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Đào tạo nội bộ rời rạc:</strong>
-                    khó theo dõi tiến độ, không có báo cáo
-                    hiệu suất
-                    học tập rõ ràng cho từng cá nhân.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Tương tác hạn chế:</strong> hỏi
-                    – đáp, thảo luận nhóm, game hóa thường
-                    phải ghép
-                    nhiều công cụ rời.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Thiếu AI trợ lực:</strong> gần
-                    như không có tính năng tóm tắt, gợi ý
-                    phản hồi, dịch
-                    trực tiếp hay cá nhân hóa lộ trình.
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div class="card soft reveal reveal-delay-2"
-              id="co-hoi">
-              <h3 class="card-title">Cơ hội từ chuyển đổi số &amp;
-                AI</h3>
-              <p class="card-sub">
-                Nhu cầu học từ xa, làm việc hybrid và đào tạo
-                online không còn là xu hướng ngắn hạn – mà là
-                chuẩn mực mới.
-              </p>
-
-              <div class="stat-grid">
-                <div class="stat-card">
-                  <div class="stat-value">1.5B+</div>
-                  <div class="stat-label">Học sinh/sinh viên
-                    từng bị ảnh hưởng bởi COVID-19.</div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-value">Hybrid</div>
-                  <div class="stat-label">Mô hình làm việc kết
-                    hợp duy trì ở nhiều ngành.</div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-value">Quốc gia</div>
-                  <div class="stat-label">
-                    Chính phủ thúc đẩy giáo dục số &amp;
-                    quản lý online.
-                  </div>
-                </div>
-              </div>
-
-              <div class="pill-row">
-                <div class="pill">AI giúp cá nhân hóa nội dung
-                  &amp; gợi ý lộ trình</div>
-                <div class="pill">Cơ hội dẫn đầu tại thị trường
-                  mới nổi</div>
-                <div class="pill">Kết nối giáo dục – doanh
-                  nghiệp – cộng đồng</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TẦM NHÌN & SỨ MỆNH -->
-      <section id="tam-nhin">
-        <div class="container">
-          <div class="section-header reveal">
-            <div class="section-title-wrap">
-              <div class="section-eyebrow">Tầm nhìn dự án</div>
-              <h2 class="section-title">
-                Nền tảng hội nghị &amp; giáo dục trực tuyến hàng
-                đầu ứng dụng AI.
-              </h2>
-              <p class="section-desc">
-                Legatalk hướng tới trở thành “hạ tầng giao tiếp”
-                cho giáo dục và doanh nghiệp – nơi việc học,
-                họp và cộng tác được hỗ trợ bởi AI nhưng vẫn giữ
-                trung tâm là con người.
-              </p>
-            </div>
-            <div class="section-tag">
-              Bảo mật làm trọng tâm · Đổi mới liên tục · Truy cập
-              công bằng
-            </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="card reveal">
-              <h3 class="card-title">Tầm nhìn</h3>
-              <p class="card-sub">
-                Không chỉ dừng lại ở một ứng dụng gọi video,
-                Legatalk là hệ sinh thái mở cho giáo viên, học
-                viên, doanh nghiệp và cộng đồng tri thức.
-              </p>
-              <ul class="card-list">
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    Kết nối giáo dục, doanh nghiệp và cộng
-                    đồng trong một nền tảng thống nhất.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    AI hỗ trợ cá nhân hóa nội dung, lộ trình
-                    học và báo cáo cho từng nhóm người dùng.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    Đảm bảo bảo mật &amp; quyền riêng tư
-                    theo tiêu chuẩn cao, minh bạch trong
-                    cách dùng dữ
-                    liệu.
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div class="card soft reveal reveal-delay-1">
-              <h3 class="card-title">Sứ mệnh</h3>
-              <p class="card-sub">
-                Định nghĩa lại trải nghiệm “làm từ xa” – nơi mỗi
-                buổi họp hay lớp học online đều rõ ràng, hiệu
-                quả và trọn vẹn như gặp trực tiếp.
-              </p>
-              <ul class="card-list">
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Hiệu suất làm việc:</strong> tối
-                    ưu thời gian họp, giúp đội ngũ tập trung
-                    vào quyết
-                    định thay vì thao tác kỹ thuật.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Bảo mật:</strong> ứng dụng các
-                    cơ chế mã hóa, phân quyền nhiều lớp,
-                    kiểm soát truy
-                    cập theo vai trò.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>AI cho giáo dục:</strong> tóm
-                    tắt nội dung, gợi ý bài tập, dịch đa
-                    ngôn ngữ, đề xuất
-                    nhắc học.
-                  </div>
-                </li>
-              </ul>
-              <div class="pill-row">
-                <div class="pill">Định nghĩa lại lớp học trực
-                  tuyến</div>
-                <div class="pill">Tối ưu chi phí &amp; hiệu quả
-                  đào tạo</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- KHÁCH HÀNG & TÍNH NĂNG -->
       <section id="tinh-nang">
         <div class="container">
           <div class="section-header reveal">
-            <div class="section-title-wrap">
-              <div class="section-eyebrow">Khách hàng &amp; tính
-                năng</div>
-              <h2 class="section-title">
-                Thiết kế cho 3 nhóm: giáo dục, doanh nghiệp
-                &amp; cá nhân học tập.
-              </h2>
-              <p class="section-desc">
-                Từ lớp học phổ thông, đại học, trung tâm đào tạo
-                cho đến đội ngũ nhân sự nội bộ, Legatalk cung
-                cấp đầy đủ công cụ để triển khai lộ trình học
-                &amp; làm việc từ xa một cách có cấu trúc.
-              </p>
-            </div>
-            <div class="section-tag">
-              Hỗ trợ đào tạo ở cả vùng sâu – vùng xa với hạ tầng
-              nhẹ, dễ tiếp cận.
-            </div>
+            <div class="section-eyebrow">Công nghệ Lõi</div>
+            <h2 class="section-title">Kiến trúc Đào tạo & Hội họp Thông minh</h2>
           </div>
-
-          <div class="grid-2">
+          <div class="grid-3">
             <div class="card reveal">
-              <h3 class="card-title">Nhóm khách hàng chính</h3>
-              <p class="card-sub">
-                Legatalk nhắm tới các đơn vị đã quen hoặc đang
-                chuyển đổi sang môi trường online.
-              </p>
-              <ul class="card-list">
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Trường học &amp; tổ chức giáo
-                      dục:</strong> dạy – học online, kiểm
-                    tra, quản lý lớp
-                    &amp; theo dõi tiến độ.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Doanh nghiệp:</strong> đào tạo
-                    nội bộ, onboarding nhân viên, chia sẻ
-                    tri thức nội bộ
-                    theo lộ trình.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Cá nhân &amp; cộng đồng học
-                      tập:</strong> nhóm nghiên cứu, cộng
-                    đồng chuyên môn, câu
-                    lạc bộ.
-                  </div>
-                </li>
-              </ul>
-
-              <div class="stat-grid" style="margin-top:12px;">
-                <div class="stat-card">
-                  <div class="stat-value">~90%</div>
-                  <div class="stat-label">Trọng tâm vào khối
-                    giáo dục &amp; cơ quan công.</div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-value">~20%</div>
-                  <div class="stat-label">Doanh nghiệp vừa và
-                    lớn – theo đà tăng trưởng.</div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-value">15%</div>
-                  <div class="stat-label">Cá nhân, nhóm nghiên
-                    cứu &amp; cộng đồng.</div>
-                </div>
-              </div>
+              <div class="card-icon">🎓</div>
+              <h3 class="card-title">Lớp học Ảo (Edu Space)</h3>
+              <p class="card-desc">Bảng trắng tương tác đa điểm, hệ thống mini-quiz đánh giá tức thì và chia nhóm tự động (Breakout Rooms).</p>
             </div>
-
-            <div class="card soft reveal reveal-delay-1">
-              <h3 class="card-title">Tính năng nổi bật</h3>
-              <ul class="card-list">
-                <li>
-                  <div class="card-bullet"></div>
-                  <div><strong>Đa nền tảng:</strong> hoạt động
-                    trên Web, desktop, iOS, Android.</div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>AI thông minh:</strong> tóm tắt
-                    buổi họp, gợi ý phản hồi, dịch đa ngôn
-                    ngữ theo thời
-                    gian thực.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Công cụ dạy &amp; học:</strong>
-                    bảng trắng, quiz nhanh, quản lý bài
-                    giảng, điểm danh,
-                    bảng điểm.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Bảo mật &amp; phân
-                      quyền:</strong> tùy chỉnh quyền truy
-                    cập, kiểm soát người tham gia,
-                    ghi hình an toàn.
-                  </div>
-                </li>
-              </ul>
-              <div class="pill-row">
-                <div class="pill">Kết hợp AI &amp; dữ liệu
-                  lớn</div>
-                <div class="pill">Tùy chỉnh theo mô hình từng tổ
-                  chức</div>
-                <div class="pill">API &amp; SDK dễ tích
-                  hợp</div>
-              </div>
+            <div class="card reveal delay-1">
+              <div class="card-icon">🧠</div>
+              <h3 class="card-title">Lega AI Assistant</h3>
+              <p class="card-desc">Trợ lý ảo tự động ghi biên bản (Meeting Minutes), phân tích cảm xúc và cá nhân hóa lộ trình học tập.</p>
             </div>
-          </div>
-
-          <!-- SO SÁNH ĐỐI THỦ -->
-          <div class="card reveal" style="margin-top:24px;">
-            <h3 class="card-title">So sánh Legatalk với các nền tảng
-              họp trực tuyến phổ biến</h3>
-            <p class="card-sub">
-              Trước khi so sánh, cần nhấn mạnh: Legatalk được
-              thiết kế từ đầu cho giáo dục &amp; đào tạo – không
-              chỉ đơn thuần là một công cụ gọi video.
-            </p>
-            <div class="compare-table">
-              <div>
-                <div class="compare-col-title">
-                  Legatalk <span class="compare-badge">Tập
-                    trung giáo dục &amp; AI</span>
-                </div>
-                <div class="compare-item">
-                  <div class="card-bullet"></div>
-                  <div>
-                    Tích hợp AI sâu: tóm tắt, dịch, gợi ý
-                    nội dung &amp; câu hỏi cho người dạy –
-                    người học.
-                  </div>
-                </div>
-                <div class="compare-item">
-                  <div class="card-bullet"></div>
-                  <div>
-                    Đầy đủ công cụ lớp học: lớp ảo, bài tập,
-                    kiểm tra, quản lý điểm &amp; lộ trình
-                    học.
-                  </div>
-                </div>
-                <div class="compare-item">
-                  <div class="card-bullet"></div>
-                  <div>
-                    Mô hình mở, có API/SDK cho phép gắn vào
-                    nền tảng sẵn có của trường/đơn vị.
-                  </div>
-                </div>
-                <div class="compare-item">
-                  <div class="card-bullet"></div>
-                  <div>
-                    Cơ chế bảo mật, phân vùng dữ liệu rõ
-                    ràng, phù hợp với tiêu chuẩn của tổ
-                    chức.
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="compare-col-title">
-                  Nền tảng họp thông thường
-                  <span class="compare-badge-alt">Tối ưu hội
-                    họp chung</span>
-                </div>
-                <div class="compare-item">
-                  <div class="card-bullet"></div>
-                  <div>
-                    Tập trung vào cuộc họp ngắn hạn, ít công
-                    cụ đánh giá &amp; theo dõi quá trình
-                    học.
-                  </div>
-                </div>
-                <div class="compare-item">
-                  <div class="card-bullet"></div>
-                  <div>
-                    Hạn chế trong việc tùy chỉnh trải nghiệm
-                    lớp học hoặc hệ thống đào tạo chuyên
-                    sâu.
-                  </div>
-                </div>
-                <div class="compare-item">
-                  <div class="card-bullet"></div>
-                  <div>
-                    Khó tích hợp sâu vào hạ tầng giáo dục,
-                    hệ thống quản lý học tập nội bộ.
-                  </div>
-                </div>
-              </div>
+            <div class="card reveal delay-2">
+              <div class="card-icon">🔐</div>
+              <h3 class="card-title">Bảo mật cấp Doanh nghiệp</h3>
+              <p class="card-desc">Cơ chế phân quyền dữ liệu nghiêm ngặt, mã hóa đầu cuối và cho phép triển khai máy chủ riêng (On-premise).</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- MÔ HÌNH DOANH THU & CƠ HỘI KINH DOANH -->
-      <section id="co-hoi-kinh-doanh">
+      <section id="roadmap">
         <div class="container">
           <div class="section-header reveal">
-            <div class="section-title-wrap">
-              <div class="section-eyebrow">Mô hình doanh thu &amp;
-                cơ hội</div>
-              <h2 class="section-title">
-                Từ gói miễn phí đến giải pháp AI tùy chỉnh cho
-                từng tổ chức.
-              </h2>
-              <p class="section-desc">
-                Legatalk linh hoạt trong mô hình thương mại: vừa
-                phục vụ cộng đồng, vừa đáp ứng yêu cầu khắt khe
-                của tổ chức lớn với các gói cao cấp &amp; dịch
-                vụ riêng.
-              </p>
-            </div>
-            <div class="section-tag">
-              Đồng hành cùng chiến lược chuyển đổi số quốc gia
-              &amp; giáo dục 4.0.
-            </div>
+            <div class="section-eyebrow">Tầm nhìn Sản phẩm</div>
+            <h2 class="section-title">Lộ trình Phát triển 2026</h2>
           </div>
-
-          <div class="pricing-grid">
-            <div class="price-card reveal">
-              <div class="price-name">Gói miễn phí</div>
-              <div class="price-tagline">Dành cho cá nhân &amp;
-                cộng đồng học tập nhỏ.</div>
-              <div class="price-label">Bắt đầu nhanh – không ràng
-                buộc.</div>
-              <div class="price-feature">• Họp &amp; học online
-                với số lượng người tham gia giới hạn.</div>
-              <div class="price-feature">• Một số tính năng AI cơ
-                bản.</div>
-              <div class="price-feature">• Phù hợp thử nghiệm
-                &amp; nhóm nhỏ.</div>
+          <div class="grid-3">
+            <div class="card reveal roadmap-step">
+              <div class="roadmap-date">HIỆN TẠI</div>
+              <h3 class="card-title">Phiên bản Alpha/Beta</h3>
+              <p class="card-desc">Hoàn thiện mô hình AI nhận diện giọng nói, tóm tắt tự động và ổn định web app đa nền tảng.</p>
             </div>
-
-            <div class="price-card reveal reveal-delay-1">
-              <div class="price-name">Gói chuyên nghiệp</div>
-              <div class="price-tagline">
-                Cho trường học, trung tâm đào tạo &amp; doanh
-                nghiệp.
-              </div>
-              <div class="price-label">Tùy biến theo quy mô &amp;
-                tính năng.</div>
-              <div class="price-feature">• Quản lý lớp, phòng học
-                &amp; lịch đào tạo tập trung.</div>
-              <div class="price-feature">
-                • AI nâng cao: báo cáo hiệu suất, theo dõi hành
-                trình học.
-              </div>
-              <div class="price-feature">
-                • Hỗ trợ triển khai &amp; đào tạo đội ngũ sử
-                dụng.
-              </div>
+            <div class="card reveal delay-1 roadmap-step" style="border-color: var(--primary); box-shadow: inset 0 0 20px rgba(14, 165, 233, 0.2);">
+              <div class="roadmap-date" style="color: #000; background: var(--primary); padding: 6px 12px; border-radius: 6px; display: inline-block; align-self: flex-start; margin-bottom: 8px;">MỤC TIÊU: CUỐI T04/2026</div>
+              <h3 class="card-title">Full Version & iOS Release</h3>
+              <p class="card-desc">Phát hành bản thương mại <strong>hoàn chỉnh (Full Version)</strong>. Ra mắt chính thức ứng dụng <strong>Legatalk trên App Store (iOS)</strong>.</p>
             </div>
-
-            <div class="price-card reveal reveal-delay-2">
-              <div class="price-name">API &amp; Dịch vụ tùy
-                chỉnh</div>
-              <div class="price-tagline">Dành cho nền tảng &amp;
-                hệ thống lớn cần tích hợp sâu.</div>
-              <div class="price-label">Giải pháp “Legatalk
-                inside”.</div>
-              <div class="price-feature">
-                • API, SDK để tích hợp vào cổng điện tử &amp;
-                LMS hiện có.
-              </div>
-              <div class="price-feature">
-                • Tùy chỉnh giao diện theo thương hiệu của đối
-                tác.
-              </div>
-              <div class="price-feature">
-                • Phân tích dữ liệu, AI cá nhân hóa chuyên sâu.
-              </div>
-            </div>
-          </div>
-
-          <div class="card soft reveal" style="margin-top:24px;">
-            <h3 class="card-title">Cơ hội kinh doanh &amp; mở
-              rộng</h3>
-            <p class="card-sub">
-              Thị trường học trực tuyến &amp; họp từ xa toàn cầu
-              tiếp tục tăng trưởng mạnh, đặc biệt tại các
-              nước đang phát triển.
-            </p>
-            <div class="timeline">
-              <div class="timeline-item">
-                <div class="timeline-phase">Giai đoạn 1</div>
-                <div class="timeline-title">Tập trung vào giáo
-                  dục &amp; doanh nghiệp tại Việt Nam</div>
-                <div class="timeline-desc">
-                  Triển khai thí điểm ở trường học, trung tâm
-                  đào tạo và một số doanh nghiệp.
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-phase">Giai đoạn 2</div>
-                <div class="timeline-title">Mở rộng sang Đông
-                  Nam Á &amp; thị trường mới nổi</div>
-                <div class="timeline-desc">
-                  Tận dụng cơ hội từ chương trình chuyển đổi
-                  số quốc gia &amp; khu vực.
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-phase">Giai đoạn 3</div>
-                <div class="timeline-title">Hệ sinh thái AI giáo
-                  dục toàn diện</div>
-                <div class="timeline-desc">
-                  Kết nối nhiều dịch vụ bổ trợ: kho học liệu,
-                  đánh giá kỹ năng, chứng chỉ số.
-                </div>
-              </div>
+            <div class="card reveal delay-2 roadmap-step">
+              <div class="roadmap-date">QUÝ III / 2026</div>
+              <h3 class="card-title">Mở rộng Hệ sinh thái (API/SDK)</h3>
+              <p class="card-desc">Đóng gói giải pháp Legatalk Core để nhúng vào hệ thống LMS nội bộ của các đối tác chiến lược.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- FAQ & TÀI LIỆU DỰ ÁN -->
-      <section id="faq">
-        <div class="container">
-          <div class="section-header reveal">
-            <div class="section-title-wrap">
-              <div class="section-eyebrow">Câu hỏi thường gặp
-                &amp; tài liệu dự án</div>
-              <h2 class="section-title">Giải đáp nhanh cho nhà
-                trường, doanh nghiệp &amp; đối tác.</h2>
-              <p class="section-desc">
-                Cùng một nền tảng nhưng mỗi đối tượng sử dụng
-                theo cách khác nhau. Dưới đây là một số câu hỏi
-                thường gặp và tài liệu tham khảo của dự án.
-              </p>
-            </div>
-            <div class="section-tag">
-              Tài liệu chi tiết sẽ được cung cấp khi làm việc trực
-              tiếp với đội ngũ Legatalk.
-            </div>
-          </div>
-
-          <div class="faq-grid">
-            <div class="card reveal">
-              <h3 class="card-title">Câu hỏi thường gặp</h3>
-              <div class="faq-item">
-                <div class="faq-q">Legatalk khác gì so với các
-                  nền tảng họp miễn phí?</div>
-                <div class="faq-a">
-                  Legatalk tập trung cho giáo dục và đào tạo
-                  nội bộ, có AI hỗ trợ, công cụ lớp học và khả
-                  năng
-                  tích hợp sâu vào hệ thống hiện có.
-                </div>
-              </div>
-              <div class="faq-item">
-                <div class="faq-q">Dữ liệu học viên &amp; nhân
-                  viên có an toàn không?</div>
-                <div class="faq-a">
-                  Nền tảng sử dụng các lớp mã hóa, phân quyền
-                  theo vai trò và tuân thủ tiêu chuẩn bảo mật.
-                  Chi
-                  tiết có thể cấu hình theo yêu cầu từng tổ
-                  chức.
-                </div>
-              </div>
-              <div class="faq-item">
-                <div class="faq-q">Có thể triển khai riêng cho
-                  một trường hoặc doanh nghiệp không?</div>
-                <div class="faq-a">
-                  Có. Legatalk hỗ trợ triển khai dedicated
-                  server, tên miền &amp; thương hiệu riêng của
-                  đối tác.
-                </div>
-              </div>
-              <div class="faq-item">
-                <div class="faq-q">AI có thay thế giáo viên hoặc
-                  người đào tạo không?</div>
-                <div class="faq-a">
-                  AI chỉ đóng vai trò trợ lý: ghi chép, tóm
-                  tắt, gợi ý và nhắc nhở. Quyết định &amp; nội
-                  dung
-                  chuyên môn vẫn do con người giữ vai trò
-                  trung tâm.
-                </div>
-              </div>
-            </div>
-
-            <div class="card soft reveal reveal-delay-1">
-              <h3 class="card-title">Tài liệu dự án &amp; liên
-                quan</h3>
-              <ul class="doc-list">
-                <li class="doc-item">
-                  <div class="doc-info">
-                    <div class="doc-dot"></div>
-                    <div>
-                      <div>Slide giới thiệu dự án
-                        Legatalk</div>
-                      <div class="doc-label">Tổng quan ·
-                        Tầm nhìn · Mô hình kinh
-                        doanh</div>
-                    </div>
-                  </div>
-                  <div class="doc-label">PDF</div>
-                </li>
-                <li class="doc-item">
-                  <div class="doc-info">
-                    <div class="doc-dot"></div>
-                    <div>
-                      <div>One-page cho nhà trường &amp;
-                        doanh nghiệp</div>
-                      <div class="doc-label">Giải pháp
-                        triển khai thực tế</div>
-                    </div>
-                  </div>
-                  <div class="doc-label">Draft</div>
-                </li>
-                <li class="doc-item">
-                  <div class="doc-info">
-                    <div class="doc-dot"></div>
-                    <div>
-                      <div>Tài liệu API &amp; SDK</div>
-                      <div class="doc-label">Tích hợp với
-                        LMS, cổng nội bộ</div>
-                    </div>
-                  </div>
-                  <div class="doc-label">Coming soon</div>
-                </li>
-              </ul>
-              <p class="cta-note" style="margin-top:10px;">
-                Liên hệ đội ngũ để nhận bộ tài liệu chi tiết,
-                demo hệ thống và tư vấn mô hình triển khai phù
-                hợp.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ỨNG DỤNG DI ĐỘNG – ANDROID -->
       <section id="ung-dung">
-        <div class="container">
-          <div class="section-header reveal">
-            <div class="section-title-wrap">
-              <div class="section-eyebrow">Ứng dụng di động</div>
-              <h2 class="section-title">Cài đặt Legatalk trên
-                thiết bị Android.</h2>
-              <p class="section-desc">
-                Trải nghiệm phòng họp &amp; lớp học Legatalk
-                trực tiếp trên điện thoại Android: tối ưu cho
-                camera, micro, chất lượng kết nối và thông báo
-                theo thời gian thực.
+        <div class="container reveal">
+          <div class="app-box">
+            <div style="flex: 1; min-width: 300px;">
+              <div class="section-eyebrow">Trải nghiệm di động</div>
+              <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 12px; color: #fff;">Tải App Legatalk (Android)</h2>
+              <p style="font-size: 15px; color: var(--muted); margin-bottom: 24px;">
+                Tối ưu phần cứng, tiết kiệm pin và thông báo đẩy tức thời.<br>
+                <span style="color: var(--primary); font-weight: bold;">*Bản cập nhật iOS sẽ có mặt vào cuối T04/2026.</span>
               </p>
-            </div>
-            <div class="section-tag">APK riêng cho đối tác &amp;
-              người dùng trải nghiệm sớm.</div>
-          </div>
-
-          <div class="grid-2">
-            <!-- Hướng dẫn cài đặt -->
-            <div class="card reveal">
-              <h3 class="card-title">Hướng dẫn cài đặt trên
-                Android (file APK)</h3>
-              <p class="card-sub">
-                Làm theo các bước dưới đây để cài đặt ứng dụng
-                Legatalk trên điện thoại Android của bạn.
-              </p>
-              <ul class="card-list">
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Bước 1:</strong> Mở trình duyệt
-                    trên điện thoại (Chrome, Cốc Cốc, v.v.)
-                    và truy cập
-                    trang giới thiệu Legatalk này.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Bước 2:</strong> Nhấn nút
-                    <em>“Tải APK Android”</em> bên cạnh để
-                    tải file cài đặt
-                    <strong>.apk</strong> về máy.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Bước 3:</strong> Khi hệ thống
-                    hỏi quyền cài đặt từ nguồn không xác
-                    định, chọn
-                    <strong>Cho phép</strong> (Settings →
-                    Security → Unknown Sources tùy phiên bản
-                    Android).
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Bước 4:</strong> Mở file APK vừa
-                    tải trong mục <strong>Tải xuống /
-                      Download</strong> và
-                    nhấn <strong>Cài đặt</strong>.
-                  </div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    <strong>Bước 5:</strong> Sau khi cài
-                    đặt, mở app Legatalk, cấp quyền
-                    <strong>Camera</strong>
-                    &amp; <strong>Micro</strong> để tham gia
-                    phòng họp &amp; lớp học.
-                  </div>
-                </li>
-              </ul>
-              <div class="pill-row">
-                <div class="pill">Tối ưu cho gọi video &amp; họp
-                  nhóm</div>
-                <div class="pill">Hỗ trợ đăng nhập tài khoản
-                  Legatalk</div>
-                <div class="pill">Tự động nhận thông báo cuộc
-                  họp mới</div>
-              </div>
-            </div>
-
-            <!-- Khối tải APK + QR -->
-            <div class="card soft reveal reveal-delay-1">
-              <h3 class="card-title">Tải APK Legatalk cho
-                Android</h3>
-              <p class="card-sub">
-                Dành cho đối tác &amp; người dùng muốn trải
-                nghiệm sớm app Legatalk trên thiết bị di động.
-              </p>
-
-              <!-- Nút tải APK -->
-              <a
-                class="btn-primary"
-                style="display:inline-flex; margin-bottom:12px;"
-                href="https://github.com/duclmhe140328/legatalkAPK/releases/download/v1/legatalk.apk">
-                Tải APK Android ↧
+              <a href="https://play.google.com/store/search?q=legatalk&c=apps&hl=vi" target="_blank" class="btn-primary" style="display: inline-block;">
+                Tải trên Google Play (CH Play)
               </a>
-
-              <p class="card-sub" style="margin-bottom:10px;">
-                Sau khi tải xong, hãy mở file
-                <strong>legatalk.apk</strong> và
-                tiến hành cài đặt
-                theo hướng dẫn.
-              </p>
-
-              <!-- QR code mô phỏng -->
-              <div style="margin-top:8px; margin-bottom:14px;">
-                <div
-                  style="
-      width: 130px;
-      height: 130px;
-      border-radius: 18px;
-      border: 1px dashed rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 1);
-      overflow: hidden;        /* Quan trọng để ảnh bo tròn */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    ">
-                  <img
-                    src="https://qr.scan.page/uploads/qr_codes/ocx3NT.svg?1763061714"
-                    alt="QR tải APK"
-                    style="
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 18px;
-      " />
-                </div>
-              </div>
-
-              <ul class="card-list">
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>Khuyến nghị dùng Android 8.0 trở lên để
-                    có trải nghiệm ổn định.</div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>Cấu hình tối thiểu: RAM 3GB, kết nối
-                    Internet ổn định.</div>
-                </li>
-                <li>
-                  <div class="card-bullet"></div>
-                  <div>
-                    Đảm bảo tải APK từ đúng tên miền
-                    <strong>legatalk.io.vn</strong> để tránh
-                    rủi ro bảo mật.
-                  </div>
-                </li>
-              </ul>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 20px; border: 1px solid var(--border-soft);">
+              <img src="https://qr.scan.page/uploads/qr_codes/ocx3NT.svg?1763061714" alt="QR Code Google Play" style="width: 150px; height: 150px; display: block; border-radius: 12px; background: #fff; padding: 10px;" />
             </div>
           </div>
         </div>
       </section>
 
-      <!-- CTA / LIÊN HỆ -->
-      <section class="cta-section" id="lien-he">
-        <div class="container">
-          <div class="cta-card reveal">
+      <section>
+        <div class="container reveal">
+          <div class="zalo-banner">
+            <div class="zalo-content">
+              <h3>Đội ngũ CSKH AI của Legatalk luôn sẵn sàng!</h3>
+              <p>Bạn cần hỗ trợ tích hợp API, đăng ký gói Doanh nghiệp hoặc gặp sự cố kỹ thuật? Kết nối ngay với chuyên viên của chúng tôi qua Zalo để được giải quyết trong vòng 5 phút.</p>
+              <a href="https://zalo.me/YOUR_ZALO_LINK" target="_blank" class="btn-zalo-large">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M21.43 10.92c-.11-.2-.23-.39-.35-.58A10.1 10.1 0 0012 3.14a10.1 10.1 0 00-9.08 7.2 10.05 10.05 0 001.6 8.35c.1.13.21.26.32.4l-.87 2.76a1.18 1.18 0 001.46 1.48l2.94-.84a10.08 10.08 0 003.63.66c5.58 0 10.1-4.52 10.1-10.1a10.05 10.05 0 00-.67-3.61v-.02l-.01-.02-.01-.02v-.02zM12 21.03a8.1 8.1 0 01-3.23-.67l-.23-.1-.24.07-2.3.66.68-2.15.11-.33-.2-.27A8.1 8.1 0 013.9 12a8.1 8.1 0 018.1-8.1 8.1 8.1 0 018.1 8.1 8.1 8.1 0 01-8.1 8.1v.03z"/></svg>
+                Chat Zalo Trực Tiếp
+              </a>
+            </div>
             <div>
-              <div class="section-eyebrow">Kết nối cùng
-                Legatalk</div>
-              <h2 class="cta-title">Hãy cùng xây dựng tương lai
-                giáo dục &amp; đào tạo số.</h2>
-              <p class="cta-sub">
-                Dù bạn là trường học, doanh nghiệp hay cộng đồng
-                học tập, Legatalk luôn sẵn sàng đồng hành trong
-                hành trình số hóa.
-              </p>
-              <div class="cta-highlight">
-                Demo hệ thống đang được triển khai theo đúng lộ
-                trình. Dự kiến hoàn tất vào tháng 12/2025.
-              </div>
-              <div class="cta-actions">
-                <button
-                  class="btn-primary"
-                  type="button"
-                  onclick="alert('Cảm ơn bạn đã quan tâm. Đội ngũ Legatalk sẽ sớm liên hệ lại qua thông tin bạn cung cấp!')">
-                  Gửi yêu cầu tư vấn
-                </button>
-                <div class="cta-pill">
-                  <div class="cta-dot"></div>
-                  Email: Talklega@gmail.com
-                </div>
-                <div class="cta-pill">
-                  <div class="cta-dot"></div>
-                  <div
-                    onclick="window.open('https://www.legatalk.io.vn', '_blank')"
-                    style="
-    cursor:pointer;
-    padding:6px 0;
-    color:#38bdf8;
-    transition:0.25s;
-  "
-                    onmouseover="this.style.color='#a855f7'"
-                    onmouseout="this.style.color='#38bdf8'">
-                    Website: www.legatalk.io.vn
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="cta-form">
-              <div class="field-label">Đăng ký nhận demo &amp; tài
-                liệu</div>
-              <div class="cta-form-row">
-                <input class="field-input" type="text"
-                  placeholder="Tên đơn vị / Cá nhân" />
-                <input class="field-input" type="email"
-                  placeholder="Email liên hệ" />
-              </div>
-              <div class="cta-form-row">
-                <input class="field-input" type="text"
-                  placeholder="Số điện thoại (tuỳ chọn)" />
-              </div>
-              <div class="cta-form-row">
-                <textarea
-                  class="field-textarea"
-                  placeholder="Nhu cầu triển khai: cho trường học, doanh nghiệp, trung tâm đào tạo hoặc cộng đồng..."></textarea>
-              </div>
-              <button
-                class="btn-primary"
-                style="width:100%; justify-content:center; margin-top:4px;"
-                type="button"
-                onclick="alert('Thông tin của bạn đã được ghi nhận (demo mô phỏng).')">
-                Gửi thông tin →
-              </button>
-              <div class="cta-note">
-
+              <div style="width: 150px; height: 150px; background: rgba(0, 104, 255, 0.2); border: 2px solid var(--zalo); border-radius: 30px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 50px rgba(0, 104, 255, 0.5); transform: rotate(10deg);">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="var(--zalo)" xmlns="http://www.w3.org/2000/svg"><path d="M21.43 10.92c-.11-.2-.23-.39-.35-.58A10.1 10.1 0 0012 3.14a10.1 10.1 0 00-9.08 7.2 10.05 10.05 0 001.6 8.35c.1.13.21.26.32.4l-.87 2.76a1.18 1.18 0 001.46 1.48l2.94-.84a10.08 10.08 0 003.63.66c5.58 0 10.1-4.52 10.1-10.1a10.05 10.05 0 00-.67-3.61v-.02l-.01-.02-.01-.02v-.02z"/></svg>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- FOOTER -->
-      <footer>
+      <section id="map" style="padding-bottom: 0;">
+        <div class="container reveal">
+          <div class="section-eyebrow" style="text-align: center;">Trụ sở chính</div>
+          <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Hệ thống Server & Văn phòng</h2>
+          <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.096814183571!2d105.78007311540227!3d21.028811885998316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4cd0c66f05%3A0xea31563511af2e54!2zSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <footer class="tech-footer">
+        <div class="footer-glow-line"></div>
+        <img src="https://legatalk.io.vn/images/logo.png" alt="BG Logo" class="footer-bg-logo">
         <div class="container">
           <div class="footer-grid">
-            <div>
-              <div class="brand">
-                 <div class="brand-logo">
-    <img src="https://legatalk.io.vn/images/logo.png" alt="Legatalk logo" class="brand-logo-img" />
-  </div>
-                <div class="brand-text">
-                  <div class="brand-title">Legatalk</div>
-                  <div class="brand-sub">Talklega
-                    Company</div>
-                </div>
+            
+            <div class="footer-brand">
+              <div class="brand-logo" style="width: 48px; height: 48px; display: inline-block;">
+                <img src="https://legatalk.io.vn/images/logo.png" alt="Legatalk logo" style="width: 100%; height: 100%; border-radius: 12px;"/>
               </div>
-              <p class="footer-brand" style="margin-top:8px;">
-                Nền tảng kết nối cho giáo dục, đào tạo nội bộ và
-                cộng đồng học tập – với AI là trợ lý đắc lực,
-                không phải thay thế con người.
-              </p>
+              <h2 style="color: #fff; font-size: 24px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px;">Legatalk</h2>
+              <p class="footer-desc">Hệ sinh thái Giáo dục và Hội họp trực tuyến thế hệ mới, ứng dụng sức mạnh của Trí tuệ Nhân tạo để định hình lại tương lai của sự kết nối.</p>
             </div>
 
             <div>
-              <div class="footer-title">Sản phẩm</div>
+              <div class="footer-title">Khám phá</div>
               <ul class="footer-list">
-                <li><a href="#gioi-thieu">Legatalk – Họp &amp;
-                    học trực tuyến</a></li>
-                <li><a href="#tinh-nang">AI hỗ trợ giáo
-                    dục</a></li>
-                <li><a href="#co-hoi-kinh-doanh">API &amp; tích
-                    hợp</a></li>
+                <li><a href="#tinh-nang">Lõi công nghệ AI</a></li>
+                <li><a href="#ung-dung">Tải ứng dụng Mobile</a></li>
+                <li><a href="#" id="footer-docs-btn">Tài liệu dự án</a></li>
+                <li><a href="https://legatalk.io.vn" target="_blank">Truy cập hệ thống Web</a></li>
               </ul>
             </div>
 
             <div>
-              <div class="footer-title">Tài liệu</div>
-              <ul class="footer-list">
-                <li><a href="#faq">FAQ &amp; tài liệu dự
-                    án</a></li>
-                <li><a href="#co-hoi-kinh-doanh">Thông tin hợp
-                    tác</a></li>
-              </ul>
+              <div class="footer-title">Thông tin Liên hệ</div>
+              <div class="footer-contact-item">
+                <span class="footer-contact-icon">📍</span>
+                <span>Trụ sở chính: Hà Nội, Việt Nam<br>Hệ thống máy chủ mã hóa bảo mật 100%</span>
+              </div>
+              <div class="footer-contact-item">
+                <span class="footer-contact-icon">📧</span>
+                <span>Talklega@gmail.com</span>
+              </div>
+              <div class="footer-contact-item" style="margin-top: 20px;">
+                <a href="https://zalo.me/YOUR_ZALO_LINK" target="_blank" style="color: var(--zalo); text-decoration: none; font-weight: bold; border: 1px solid var(--zalo); padding: 8px 16px; border-radius: 8px; background: rgba(0, 104, 255, 0.1); display: inline-flex; align-items: center; gap: 8px;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--zalo)" xmlns="http://www.w3.org/2000/svg"><path d="M21.43 10.92c-.11-.2-.23-.39-.35-.58A10.1 10.1 0 0012 3.14a10.1 10.1 0 00-9.08 7.2 10.05 10.05 0 001.6 8.35c.1.13.21.26.32.4l-.87 2.76a1.18 1.18 0 001.46 1.48l2.94-.84a10.08 10.08 0 003.63.66c5.58 0 10.1-4.52 10.1-10.1a10.05 10.05 0 00-.67-3.61v-.02l-.01-.02-.01-.02v-.02z"/></svg>
+                  Hỗ trợ Zalo 24/7
+                </a>
+              </div>
             </div>
 
-            <div>
-              <div class="footer-title">Liên hệ</div>
-              <ul class="footer-list">
-                <li><a
-                    href="mailto:Talklega@gmail.com">Talklega@gmail.com</a></li>
-                <li>Hà Nội, Việt Nam</li>
-                <li>
-                  <a href="https://www.legatalk.io.vn"
-                    target="_blank"
-                    rel="noopener noreferrer">www.legatalk.io.vn</a>
-                </li>
-              </ul>
-            </div>
           </div>
 
           <div class="footer-bottom">
-            <div>
-              © <span class="highlight">Talklega Company</span> ·
-              Nền tảng tương lai cho giáo dục &amp; đào tạo
-              số.
+            <div><strong>Legatalk Company</strong> © 2024 - 2026. All rights reserved.</div>
+            <div style="display: flex; gap: 20px;">
+              <a href="#" style="color: var(--muted); text-decoration: none;">Chính sách bảo mật</a>
+              <a href="#" style="color: var(--muted); text-decoration: none;">Điều khoản sử dụng</a>
             </div>
-            <div>Privacy · Terms · Cookies</div>
           </div>
         </div>
       </footer>
     </div>
 
     <script>
-      // Hiệu ứng reveal khi scroll
-      const reveals = document.querySelectorAll(".reveal");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
+      // 1. VẼ MẠNG LƯỚI AI BẰNG CANVAS
+      const canvas = document.getElementById('ai-network');
+      const ctx = canvas.getContext('2d');
+      let particlesArray;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 2 + 1;
+          this.speedX = (Math.random() - 0.5) * 1;
+          this.speedY = (Math.random() - 0.5) * 1;
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+          if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(14, 165, 233, 0.5)';
+          ctx.fill();
+        }
+      }
+
+      function initParticles() {
+        particlesArray = [];
+        let numberOfParticles = (canvas.width * canvas.height) / 15000;
+        for (let i = 0; i < numberOfParticles; i++) {
+          particlesArray.push(new Particle());
+        }
+      }
+
+      function connectParticles() {
+        let opacityValue = 1;
+        for (let a = 0; a < particlesArray.length; a++) {
+          for (let b = a; b < particlesArray.length; b++) {
+            let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+              + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+            if (distance < (canvas.width / 10) * (canvas.height / 10)) {
+              opacityValue = 1 - (distance / 20000);
+              ctx.strokeStyle = 'rgba(14, 165, 233,' + opacityValue + ')';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+              ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+              ctx.stroke();
             }
-          });
-        },
-        { threshold: 0.15 }
-      );
+          }
+        }
+      }
 
-      reveals.forEach((el) => observer.observe(el));
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+          particlesArray[i].update();
+          particlesArray[i].draw();
+        }
+        connectParticles();
+        requestAnimationFrame(animateParticles);
+      }
+      initParticles();
+      animateParticles();
 
-      // Toggle menu mobile
-      const navToggle = document.querySelector(".nav-toggle");
-      const navLinks = document.querySelector(".nav-links");
+      // 2. HIỆU ỨNG GÕ CHỮ (TYPING EFFECT)
+      const textArray = ["Bằng Trí tuệ Nhân tạo", "Với Phân tích Dữ liệu", "Theo Cách Của Tương Lai"];
+      let textIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typewriterElement = document.getElementById("typewriter");
 
-      if (navToggle && navLinks) {
-        navToggle.addEventListener("click", () => {
-          navToggle.classList.toggle("open");
-          navLinks.classList.toggle("nav-open");
+      function typeEffect() {
+        const currentText = textArray[textIndex];
+        if (isDeleting) {
+          typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 50 : 100;
+        if (!isDeleting && charIndex === currentText.length) {
+          typeSpeed = 2000; 
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % textArray.length;
+          typeSpeed = 500; 
+        }
+        setTimeout(typeEffect, typeSpeed);
+      }
+      setTimeout(typeEffect, 1500); 
+
+      // 3. LOGIC MỞ RÈM (CURTAIN LOADER)
+      const curtainTrigger = document.getElementById('curtain-trigger');
+      const curtainLoader = document.getElementById('curtain-loader');
+      curtainTrigger.addEventListener('click', () => {
+        curtainLoader.classList.add('opened');
+        setTimeout(() => { curtainLoader.style.display = 'none'; }, 2500); 
+      });
+
+      // 4. SCROLL REVEAL ANIMATION
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
         });
+      }, { threshold: 0.1 });
+      reveals.forEach(el => observer.observe(el));
 
-        navLinks.querySelectorAll(".nav-link, .nav-cta").forEach((item) => {
-          item.addEventListener("click", () => {
-            navToggle.classList.remove("open");
-            navLinks.classList.remove("nav-open");
-          });
+      // 5. MOBILE MENU
+      const navBtn = document.getElementById('mobile-menu-btn');
+      const navLinks = document.getElementById('nav-links');
+      navBtn.addEventListener('click', () => { navBtn.classList.toggle('open'); navLinks.classList.toggle('nav-open'); });
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => { navBtn.classList.remove('open'); navLinks.classList.remove('nav-open'); });
+      });
+
+      // 6. LOGIC MỞ IFRAME TOÀN MÀN HÌNH (GỘP CHUNG CHO APP VÀ TÀI LIỆU)
+      const openAppBtn = document.getElementById('open-app-btn');
+      const closeAppBtn = document.getElementById('close-iframe-btn');
+      const overlay = document.getElementById('iframe-overlay');
+      const iframe = document.getElementById('app-iframe');
+      const iframeTitleText = document.getElementById('iframe-title-text');
+
+      function openFullscreenIframe(url, title) {
+        iframeTitleText.textContent = title;
+        iframe.src = url; // Gán link mới
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; 
+        
+        // Đóng các thành phần khác nếu đang mở
+        navBtn.classList.remove('open'); 
+        navLinks.classList.remove('nav-open');
+        closeDocs();
+      }
+
+      openAppBtn.addEventListener('click', () => {
+        openFullscreenIframe('https://legatalk.io.vn/', 'Legatalk AI Workspace');
+      });
+
+      closeAppBtn.addEventListener('click', () => {
+        overlay.classList.remove('active');
+        document.body.style.overflow = ''; 
+        iframe.src = ''; // Xóa link để ngắt tài nguyên ngầm
+      });
+
+      // Xử lý nút xem Slide Canva
+      const pitchDeckBtn = document.getElementById('open-pitch-deck-btn');
+      if(pitchDeckBtn) {
+        pitchDeckBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          openFullscreenIframe('https://canva.link/hq9vxriysn98kej', 'Pitch Deck Legatalk (2026)');
         });
       }
 
+      // 7. LOGIC MODAL TÀI LIỆU
+      const docsModal = document.getElementById('docs-modal');
+      const closeDocsBtn = document.getElementById('close-docs-btn');
+      const navDocsBtn = document.getElementById('nav-docs-btn');
+      const footerDocsBtn = document.getElementById('footer-docs-btn');
 
+      function openDocs(e) {
+        e.preventDefault();
+        docsModal.classList.add('active');
+        navBtn.classList.remove('open'); 
+        navLinks.classList.remove('nav-open');
+      }
+
+      function closeDocs() {
+        docsModal.classList.remove('active');
+      }
+
+      if(navDocsBtn) navDocsBtn.addEventListener('click', openDocs);
+      if(footerDocsBtn) footerDocsBtn.addEventListener('click', openDocs);
+      if(closeDocsBtn) closeDocsBtn.addEventListener('click', closeDocs);
+      
+      docsModal.addEventListener('click', (e) => {
+        if(e.target === docsModal) closeDocs();
+      });
     </script>
   </body>
 </html>
-
-
-
-
-
