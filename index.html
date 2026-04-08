@@ -213,13 +213,13 @@
       }
       .hero-kicker::before { content: ''; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulseLoader 1s infinite alternate; }
       
-      /* ---------- XỬ LÝ LỖI NHẢY TRANG HERO TITLE ---------- */
+      /* Xử lý lỗi nhảy trang Hero Title */
       .hero-title { 
         font-size: clamp(36px, 5vw, 56px); 
         line-height: 1.3; 
         margin-bottom: 20px; 
         font-weight: 800; 
-        min-height: 150px; /* Chiều cao cố định trên màn PC để chữ gõ không nhảy */
+        min-height: 150px; 
         display: block;
       }
       
@@ -246,7 +246,7 @@
       .btn-zalo {
         border-radius: 12px; background: rgba(0, 104, 255, 0.1); border: 1px solid var(--zalo);
         color: #fff; padding: 14px 28px; font-weight: bold; font-size: 15px; cursor: pointer; 
-        transition: 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        transition: 0.3s; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         position: relative; overflow: hidden;
       }
       .btn-zalo::after {
@@ -321,8 +321,14 @@
       }
       .btn-zalo-large:hover { transform: scale(1.05); background: #0055d4; }
 
-      /* App Download */
-      .app-box { display: flex; align-items: center; justify-content: space-between; background: var(--bg-card); padding: 40px; border-radius: 24px; border: 1px solid var(--border-soft); flex-wrap: wrap; gap:30px;}
+      /* App Download Section */
+      .app-box { display: flex; align-items: center; justify-content: space-between; background: var(--bg-card); padding: 40px; border-radius: 24px; border: 1px solid var(--border-soft); flex-wrap: wrap; gap: 30px;}
+      .app-content-text { flex: 1; min-width: 300px; }
+      .app-title { font-size: 32px; font-weight: 800; margin-bottom: 12px; color: #fff; }
+      .app-desc { font-size: 15px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+      .app-desc span { color: var(--primary); font-weight: bold; }
+      .app-qr { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 20px; border: 1px solid var(--border-soft); }
+      .app-qr img { width: 150px; height: 150px; display: block; border-radius: 12px; background: #fff; padding: 10px; }
       
       /* Google Maps */
       .map-wrapper {
@@ -406,10 +412,21 @@
         .hero-title { min-height: 140px; }
         
         .footer-grid { grid-template-columns: 1fr; }
+
+        /* Fix App Box Responsive */
+        .app-box { padding: 30px 20px; flex-direction: column; text-align: center; justify-content: center;}
+        .app-content-text { min-width: 100%; }
+        .app-title { font-size: 26px; }
+        .app-box .btn-primary { width: 100%; padding: 14px 10px; text-align: center; display: block;}
+        .app-qr { margin: 0 auto; }
       }
 
       @media (max-width: 480px) {
         .hero-title { font-size: 34px; min-height: 135px; }
+        .zalo-banner { padding: 24px; text-align: center; justify-content: center; }
+        .btn-zalo-large { width: 100%; justify-content: center; }
+        .hero-actions { flex-direction: column; width: 100%; align-items: stretch; }
+        .btn-primary, .btn-zalo { width: 100%; justify-content: center; }
       }
 
       @media (max-width: 430px) {
@@ -613,19 +630,19 @@
       <section id="ung-dung">
         <div class="container reveal">
           <div class="app-box">
-            <div style="flex: 1; min-width: 300px;">
+            <div class="app-content-text">
               <div class="section-eyebrow">Trải nghiệm di động</div>
-              <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 12px; color: #fff;">Tải App Legatalk (Android)</h2>
-              <p style="font-size: 15px; color: var(--muted); margin-bottom: 24px;">
+              <h2 class="app-title">Tải App Legatalk (Android)</h2>
+              <p class="app-desc">
                 Tối ưu phần cứng, tiết kiệm pin và thông báo đẩy tức thời.<br>
-                <span style="color: var(--primary); font-weight: bold;">*Bản cập nhật iOS sẽ có mặt vào cuối T04/2026.</span>
+                <span>*Bản cập nhật iOS sẽ có mặt vào cuối T04/2026.</span>
               </p>
               <a href="https://play.google.com/store/search?q=legatalk&c=apps&hl=vi" target="_blank" class="btn-primary" style="display: inline-block;">
                 Tải trên Google Play (CH Play)
               </a>
             </div>
-            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 20px; border: 1px solid var(--border-soft);">
-              <img src="https://qr.scan.page/uploads/qr_codes/ocx3NT.svg?1763061714" alt="QR Code Google Play" style="width: 150px; height: 150px; display: block; border-radius: 12px; background: #fff; padding: 10px;" />
+            <div class="app-qr">
+              <img src="https://qr.scan.page/uploads/qr_codes/ugdS8f.svg?v=1775636516" alt="QR Code Google Play" />
             </div>
           </div>
         </div>
