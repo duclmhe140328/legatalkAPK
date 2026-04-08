@@ -200,20 +200,10 @@
       .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 20px; position: relative; z-index: 60; }
       .nav-toggle span { position: absolute; width: 100%; height: 2px; background: #fff; transition: 0.3s; border-radius: 2px;}
       .nav-toggle span:nth-child(1) { top: 0; } .nav-toggle span:nth-child(2) { top: 9px; } .nav-toggle span:nth-child(3) { top: 18px; }
-      @media (max-width: 900px) {
-        .nav-toggle { display: block; }
-        .nav-links {
-          position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
-          background: rgba(2, 4, 15, 0.98); backdrop-filter: blur(30px); border-left: 1px solid var(--primary-glow);
-          flex-direction: column; align-items: flex-start; padding: 100px 30px; transition: right 0.4s ease;
-        }
-        .nav-links.nav-open { right: 0; box-shadow: -10px 0 50px rgba(0,0,0,0.8); }
-      }
 
       /* ---------- HERO ---------- */
       .hero { padding: 100px 0 80px; }
       .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
-      @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; text-align: center; } .hero-actions { justify-content: center; } }
 
       .hero-kicker {
         font-size: 12px; text-transform: uppercase; letter-spacing: 0.2em; color: #fff;
@@ -223,13 +213,24 @@
       }
       .hero-kicker::before { content: ''; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulseLoader 1s infinite alternate; }
       
-      .hero-title { font-size: clamp(36px, 5vw, 56px); line-height: 1.15; margin-bottom: 20px; font-weight: 800; }
+      /* ---------- XỬ LÝ LỖI NHẢY TRANG HERO TITLE ---------- */
+      .hero-title { 
+        font-size: clamp(36px, 5vw, 56px); 
+        line-height: 1.3; 
+        margin-bottom: 20px; 
+        font-weight: 800; 
+        min-height: 150px; /* Chiều cao cố định trên màn PC để chữ gõ không nhảy */
+        display: block;
+      }
+      
       .typewriter-text {
         background: linear-gradient(to right, var(--primary), var(--accent), #fff);
         -webkit-background-clip: text; color: transparent;
         border-right: 4px solid var(--primary);
         animation: blinkCursor 0.8s step-end infinite;
-        white-space: nowrap; display: inline-block;
+        white-space: pre-wrap; 
+        word-break: keep-all;
+        display: inline; 
       }
       @keyframes blinkCursor { 50% { border-color: transparent; } }
 
@@ -354,7 +355,6 @@
       }
       
       .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; position: relative; z-index: 2;}
-      @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
       
       .footer-brand .brand-logo { margin-bottom: 16px; }
       .footer-desc { color: var(--muted); font-size: 14px; max-width: 350px; line-height: 1.6; margin-bottom: 20px; }
@@ -389,6 +389,39 @@
         0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7); }
         70% { box-shadow: 0 0 0 20px rgba(0, 104, 255, 0); }
         100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); }
+      }
+
+      /* ---------- TỐI ƯU RESPONSIVE TỪNG DÒNG MOBILE ---------- */
+      @media (max-width: 900px) {
+        .nav-toggle { display: block; }
+        .nav-links {
+          position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+          background: rgba(2, 4, 15, 0.98); backdrop-filter: blur(30px); border-left: 1px solid var(--primary-glow);
+          flex-direction: column; align-items: flex-start; padding: 100px 30px; transition: right 0.4s ease;
+        }
+        .nav-links.nav-open { right: 0; box-shadow: -10px 0 50px rgba(0,0,0,0.8); }
+        
+        .hero-grid { grid-template-columns: 1fr; text-align: center; } 
+        .hero-actions { justify-content: center; } 
+        .hero-title { min-height: 140px; }
+        
+        .footer-grid { grid-template-columns: 1fr; }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title { font-size: 34px; min-height: 135px; }
+      }
+
+      @media (max-width: 430px) {
+        .hero-title { font-size: 30px; min-height: 120px; line-height: 1.35; }
+      }
+
+      @media (max-width: 390px) {
+        .hero-title { font-size: 28px; min-height: 110px; }
+      }
+
+      @media (max-width: 360px) {
+        .hero-title { font-size: 26px; min-height: 115px; }
       }
 
       /* Animations */
@@ -426,7 +459,7 @@
               <div class="doc-desc">Tổng quan dự án, tầm nhìn và mô hình kinh doanh.</div>
             </div>
           </div>
-          <a href="#" class="doc-btn" id="open-pitch-deck-btn">Xem Slide</a>
+          <a href="https://canva.link/hq9vxriysn98kej" target="_blank" class="doc-btn" onclick="closeDocs()">Xem Slide</a>
         </div>
 
         <div class="doc-item">
@@ -605,7 +638,7 @@
               <h3>Đội ngũ CSKH AI của Legatalk luôn sẵn sàng!</h3>
               <p>Bạn cần hỗ trợ tích hợp API, đăng ký gói Doanh nghiệp hoặc gặp sự cố kỹ thuật? Kết nối ngay với chuyên viên của chúng tôi qua Zalo để được giải quyết trong vòng 5 phút.</p>
               <a href="https://zalo.me/YOUR_ZALO_LINK" target="_blank" class="btn-zalo-large">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M21.43 10.92c-.11-.2-.23-.39-.35-.58A10.1 10.1 0 0012 3.14a10.1 10.1 0 00-9.08 7.2 10.05 10.05 0 001.6 8.35c.1.13.21.26.32.4l-.87 2.76a1.18 1.18 0 001.46 1.48l2.94-.84a10.08 10.08 0 003.63.66c5.58 0 10.1-4.52 10.1-10.1a10.05 10.05 0 00-.67-3.61v-.02l-.01-.02-.01-.02v-.02zM12 21.03a8.1 8.1 0 01-3.23-.67l-.23-.1-.24.07-2.3.66.68-2.15.11-.33-.2-.27A8.1 8.1 0 013.9 12a8.1 8.1 0 018.1-8.1 8.1 8.1 0 018.1 8.1 8.1 8.1 0 01-8.1 8.1v.03z"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M21.43 10.92c-.11-.2-.23-.39-.35-.58A10.1 10.1 0 0012 3.14a10.1 10.1 0 00-9.08 7.2 10.05 10.05 0 001.6 8.35c.1.13.21.26.32.4l-.87 2.76a1.18 1.18 0 001.46 1.48l2.94-.84a10.08 10.08 0 003.63.66c5.58 0 10.1-4.52 10.1-10.1a10.05 10.05 0 00-.67-3.61v-.02l-.01-.02-.01-.02v-.02zM12 21.03a8.1 8.1 0 01-3.23-.67l-.23-.1-.24.07-2.3.66.68-2.15.11-.33-.2-.27A8.1 8.1 0 013.9 12a8.1 8.1 0 018.1-8.1 8.1 8.1 0 018.1 8.1 8.1 8.1 0 01-8.1 8.1v.03z"/><path d="M10.87 15.65h-1.5a.65.65 0 010-1.3h1.5a.65.65 0 010 1.3zM15.13 15.65h-1.5a.65.65 0 010-1.3h1.5a.65.65 0 010 1.3zM10.87 11.74h-1.5a.65.65 0 010-1.3h1.5a.65.65 0 010 1.3zM15.13 11.74h-1.5a.65.65 0 010-1.3h1.5a.65.65 0 010 1.3z"/></svg>
                 Chat Zalo Trực Tiếp
               </a>
             </div>
@@ -840,15 +873,6 @@
         document.body.style.overflow = ''; 
         iframe.src = ''; // Xóa link để ngắt tài nguyên ngầm
       });
-
-      // Xử lý nút xem Slide Canva
-      const pitchDeckBtn = document.getElementById('open-pitch-deck-btn');
-      if(pitchDeckBtn) {
-        pitchDeckBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          openFullscreenIframe('https://canva.link/hq9vxriysn98kej', 'Pitch Deck Legatalk (2026)');
-        });
-      }
 
       // 7. LOGIC MODAL TÀI LIỆU
       const docsModal = document.getElementById('docs-modal');
