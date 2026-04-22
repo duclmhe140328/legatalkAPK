@@ -60,7 +60,7 @@
 
       /* ---------- ẨN WIDGET NỔI KHI MỞ IFRAME ---------- */
       body.hide-floating-widgets .elfsight-app-678f68bc-e13f-49bf-9a81-0c8480a6e7cb,
-      body.hide-floating-widgets [class*="eapps"], /* Quét toàn bộ class của Elfsight */
+      body.hide-floating-widgets [class*="eapps"], 
       body.hide-floating-widgets .zalo-floating {
         display: none !important;
         opacity: 0 !important;
@@ -624,7 +624,8 @@
               <p class="card-desc">Hoàn thiện mô hình AI nhận diện giọng nói, tóm tắt tự động và ổn định web app đa nền tảng.</p>
             </div>
             <div class="card reveal delay-1 roadmap-step" style="border-color: var(--primary); box-shadow: inset 0 0 20px rgba(14, 165, 233, 0.2);">
-              <div class="roadmap-date" style="color: #000; background: var(--primary); padding: 6px 12px; border-radius: 6px; display: inline-block; align-self: flex-start; margin-bottom: 8px;">MỤC TIÊU: CUỐI T04/2026</div>
+              <div id="countdown-timer" class="roadmap-date" style="color: #000; background: var(--primary); padding: 6px 12px; border-radius: 6px; display: inline-block; align-self: flex-start; margin-bottom: 8px; font-weight: bold; font-family: monospace; font-variant-numeric: tabular-nums;">Đang tải...</div>
+              
               <h3 class="card-title">Full Version & iOS Release</h3>
               <p class="card-desc">Phát hành bản thương mại <strong>hoàn chỉnh (Full Version)</strong>. Ra mắt chính thức ứng dụng <strong>Legatalk trên App Store (iOS)</strong>.</p>
             </div>
@@ -645,7 +646,7 @@
               <h2 class="app-title">Tải App Legatalk (Android)</h2>
               <p class="app-desc">
                 Tối ưu phần cứng, tiết kiệm pin và thông báo đẩy tức thời.<br>
-                <span>*Bản cập nhật iOS sẽ có mặt vào cuối T04/2026.</span>
+                <span>*Bản cập nhật iOS sẽ có mặt vào thời điểm đếm ngược kết thúc.</span>
               </p>
               <a href="https://play.google.com/store/search?q=legatalk&c=apps&hl=vi" target="_blank" class="btn-primary" style="display: inline-block;">
                 Tải trên Google Play (CH Play)
@@ -658,8 +659,29 @@
         </div>
       </section>
 
-      <section>
+      <section id="ung-dung">
         <div class="container reveal">
+          <div class="app-box">
+            <div class="app-content-text">
+              <div class="section-eyebrow">Trải nghiệm di động</div>
+              <h2 class="app-title">Tải App Legatalk (IOS)</h2>
+              <p class="app-desc">
+                Tối ưu phần cứng, tiết kiệm pin và thông báo đẩy tức thời.<br>
+                <span>*Bản cập nhật iOS sẽ có mặt vào thời điểm đếm ngược kết thúc.</span>
+              </p>
+              <a href="https://apps.apple.com/vn/iphone/search?l=vi&term=legatalk" target="_blank" class="btn-primary" style="display: inline-block;">
+                Tải trên App Store
+              </a>
+            </div>
+            <div class="app-qr">
+              <img src="https://qr.scan.page/uploads/qr_codes/ocx3NT.svg?1763061714" alt="QR Code App Store" />
+            </div>
+          </div>
+        </div>
+      </section>    
+
+      <section>
+        <div class="container reveal">  
           <div class="zalo-banner">
             <div class="zalo-content">
               <h3>Đội ngũ CSKH AI của Legatalk luôn sẵn sàng!</h3>
@@ -930,6 +952,36 @@
       docsModal.addEventListener('click', (e) => {
         if(e.target === docsModal) closeDocs();
       });
+
+      // 8. BỘ ĐẾM NGƯỢC THỜI GIAN ĐẾN 04/05/2026 (CHỈ CÓ GIỜ : PHÚT : GIÂY)
+      const countdownDate = new Date("May 4, 2026 23:59:59").getTime();
+      const countdownElement = document.getElementById("countdown-timer");
+
+      if (countdownElement) {
+        const timerInterval = setInterval(function() {
+          const now = new Date().getTime();
+          const distance = countdownDate - now;
+
+          if (distance < 0) {
+            clearInterval(timerInterval);
+            countdownElement.innerHTML = "ĐÃ RA MẮT";
+            return;
+          }
+
+          // Tính tổng số giờ thay vì chia ra thành ngày
+          const totalHours = Math.floor(distance / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Định dạng số luôn có ít nhất 2 chữ số (ví dụ: 09 thay vì 9)
+          const h = totalHours < 10 ? "0" + totalHours : totalHours;
+          const m = minutes < 10 ? "0" + minutes : minutes;
+          const s = seconds < 10 ? "0" + seconds : seconds;
+
+          // Hiển thị chỉ Giờ, Phút và Giây
+          countdownElement.innerHTML = `MỤC TIÊU: ${h} giờ: ${m} phút: ${s} giây `;
+        }, 1000);
+      }
     </script>
   </body>
 </html>
