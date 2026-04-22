@@ -10,6 +10,43 @@
     <div class="elfsight-app-678f68bc-e13f-49bf-9a81-0c8480a6e7cb" data-elfsight-app-lazy></div>
     
     <style>
+      /* ---------- HỆ SINH THÁI (ECOSYSTEM) ---------- */
+      .eco-grid { 
+        display: grid; 
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 24px; 
+      }
+      .eco-card {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+      }
+      .eco-card .card-desc {
+        margin-bottom: 20px;
+      }
+      .eco-link-text {
+        margin-top: auto;
+        font-size: 14px;
+        font-weight: bold;
+        color: var(--muted);
+        transition: 0.3s;
+        display: inline-flex;
+        align-items: center;
+      }
+      .eco-card:hover .eco-link-text {
+        color: var(--primary);
+        text-shadow: 0 0 10px var(--primary-glow);
+        transform: translateX(5px);
+      }
+
+      /* Responsive cho Hệ sinh thái */
+      @media (max-width: 1024px) {
+        .eco-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 600px) {
+        .eco-grid { grid-template-columns: 1fr; }
+      } 
       :root {
         --bg-main: #02040f;
         --bg-card: rgba(10, 15, 30, 0.6);
@@ -548,6 +585,7 @@
             <a href="#roadmap" class="nav-link">Roadmap 2026</a>
             <a href="#" class="nav-link" id="nav-docs-btn">Tài liệu</a>
             <a href="#ung-dung" class="nav-link">Mobile App</a>
+            <a href="#he-sinh-thai" class="nav-link">Hệ sinh thái</a>
             <button class="nav-cta" id="open-app-btn">Truy cập Website →</button>
           </nav>
         </div>
@@ -679,7 +717,45 @@
           </div>
         </div>
       </section>    
+<section id="he-sinh-thai">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-eyebrow">Hệ sinh thái mở rộng</div>
+            <h2 class="section-title">Khám Phá Vũ Trụ Legatalk</h2>
+          </div>
+          <div class="eco-grid">
+            
+            <a href="#" class="card eco-card reveal">
+              <div class="card-icon">💬</div>
+              <h3 class="card-title">LegaChat</h3>
+              <p class="card-desc">Nền tảng giao tiếp trực tuyến, nhắn tin tức thời được mã hóa bảo mật dành riêng cho doanh nghiệp.</p>
+              <div class="eco-link-text">Trải nghiệm ngay →</div>
+            </a>
 
+            <a href="#" class="card eco-card reveal delay-1">
+              <div class="card-icon">🧠</div>
+              <h3 class="card-title">LegaAI</h3>
+              <p class="card-desc">Trợ lý trí tuệ nhân tạo toàn năng, hỗ trợ phân tích dữ liệu và tự động hóa quy trình làm việc.</p>
+              <div class="eco-link-text">Trải nghiệm ngay →</div>
+            </a>
+
+            <a href="#" class="card eco-card reveal delay-2">
+              <div class="card-icon">🛒</div>
+              <h3 class="card-title">LegaEcommerce</h3>
+              <p class="card-desc">Giải pháp thương mại điện tử chuyên biệt, tích hợp mượt mà với hệ thống thanh toán cốt lõi.</p>
+              <div class="eco-link-text">Trải nghiệm ngay →</div>
+            </a>
+
+            <a href="#" class="card eco-card reveal delay-2">
+              <div class="card-icon">🚀</div>
+              <h3 class="card-title">LegaGutin</h3>
+              <p class="card-desc">Sàn NFT trực tuyến - Nơi công nhận mọi sáng chế sáng tạo từ hình ảnh đến video</p>
+              <div class="eco-link-text">Trải nghiệm ngay →</div>
+            </a>
+
+          </div>
+        </div>
+      </section>  
       <section>
         <div class="container reveal">  
           <div class="zalo-banner">
@@ -730,6 +806,10 @@
                 <li><a href="#tinh-nang">Lõi công nghệ AI</a></li>
                 <li><a href="#ung-dung">Tải ứng dụng Mobile</a></li>
                 <li><a href="#" id="footer-docs-btn">Tài liệu dự án</a></li>
+                <li><a href="#" >Lega Gutin</a></li>
+                <li><a href="#" >LegaChat</a></li>
+                <li><a href="#" >LegaAI</a></li>
+                <li><a href="#" >LegaEcommerce</a></li>
                 <li><a href="https://legatalk.io.vn" target="_blank">Truy cập hệ thống Web</a></li>
               </ul>
             </div>
